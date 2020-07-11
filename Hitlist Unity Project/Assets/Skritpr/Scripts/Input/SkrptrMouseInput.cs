@@ -6,14 +6,18 @@ namespace Skrptr
 {
     public class SkrptrMouseInput : StandaloneInputModule
     {
-        private void Update()
+        public float longPressDelay = 0.5f;
+        public void LongPress()
         {
-           
+            SkrptrMain.hoveredElem.LongPress();
+            SkrptrMain.selectedElem = null;
+        }
+        private void Update()
+        {          
 
             if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) && SkrptrMain.inputType != SkrptrInputType.Mouse)
             {
                 SkrptrMain.inputType = SkrptrInputType.Mouse;
-                //Debug.LogError("Setting to mouse");
             }
 
             if (SkrptrMain.inputType == SkrptrInputType.Mouse)
@@ -33,12 +37,13 @@ namespace Skrptr
                                 SkrptrMain.hoveredElem.HoverExit();
                                 SkrptrMain.lastHoveredElem = SkrptrMain.hoveredElem;
                                 SkrptrMain.hoveredElem = null;
+                                CancelInvoke(nameof(LongPress));
                             }
                         }
                         if (SkrptrMain.hoveredElem == null)
                         {
                             SkrptrMain.hoveredElem = pointerData.pointerCurrentRaycast.gameObject.GetComponent<SkrptrElement>();
-                            SkrptrMain.hoveredElem.HoverEnter();
+                            SkrptrMain.hoveredElem.HoverEnter();                            
                         }
 
                         //First input
@@ -50,6 +55,7 @@ namespace Skrptr
 
                             SkrptrMain.selectedElem = pointerData.pointerCurrentRaycast.gameObject.GetComponent<SkrptrElement>();
                             SkrptrMain.selectedElem.Select();
+                            Invoke(nameof(LongPress), longPressDelay);
                         }
                         // while holding mouse button down
                         if (Input.GetMouseButton(0))
@@ -63,6 +69,7 @@ namespace Skrptr
                                     //    mouseManager.lastSelectedElement.OnDeselect();
                                     SkrptrMain.selectedElem.Deselect();
                                     SkrptrMain.selectedElem = null;
+                                    CancelInvoke(nameof(LongPress));
                                 }
                             }
                         }
@@ -80,6 +87,7 @@ namespace Skrptr
                                 //mouseManager.lastSelectedElement = SkrptrMain.selectedElem;
                                 //                mouseManager.HandleInput(DirectionEventTrigger.Into);
                                 SkrptrMain.selectedElem = null;
+                                CancelInvoke(nameof(LongPress));
                             }
                         }
                     }
@@ -90,6 +98,7 @@ namespace Skrptr
                             SkrptrMain.hoveredElem.HoverExit();
                             SkrptrMain.lastHoveredElem = SkrptrMain.hoveredElem;
                             SkrptrMain.hoveredElem = null;
+                            CancelInvoke(nameof(LongPress));
                         }
                     }
                 }
@@ -101,11 +110,13 @@ namespace Skrptr
                         SkrptrMain.hoveredElem.HoverExit();
                         SkrptrMain.lastHoveredElem = SkrptrMain.hoveredElem;
                         SkrptrMain.hoveredElem = null;
+                        CancelInvoke(nameof(LongPress));
                     }
                     if (SkrptrMain.selectedElem != null)
                     {
                         SkrptrMain.selectedElem.HoverExit();
                         SkrptrMain.selectedElem = null;
+                        CancelInvoke(nameof(LongPress));
                     }
                 }
             }

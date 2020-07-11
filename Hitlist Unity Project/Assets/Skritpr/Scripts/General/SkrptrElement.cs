@@ -106,6 +106,11 @@ namespace Skrptr
             //Debug.Log("Uncheck: " + gameObject.name);
             ExecuteAnims(SkrptrEvent.Uncheck);
         }
+        public virtual void LongPress()
+        {
+            ExecuteAnims(SkrptrEvent.LongPress);
+        }
+
         protected void ExecuteAnims(SkrptrEvent currentSkrptrEvent)
         {
             foreach (var action in anims)

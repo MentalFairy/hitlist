@@ -18,7 +18,8 @@
         HoverEnter = 512,
         HoverExit = 1024,
         Check = 2048,
-        Uncheck = 4096,      
+        Uncheck = 4096,
+        LongPress = 8192,
     };
     [System.Flags]
     public enum SkrptrDirection

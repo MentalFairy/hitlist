@@ -14,6 +14,12 @@ namespace Skrptr
         public List<GameObject> hitSkrptrElements;
         public TouchPhase phase;
         public Touch touch;
+        public float longPressDelay = .5f;
+        public void LongPress()
+        {
+            SkrptrMain.hoveredElem.LongPress();
+            SkrptrMain.hoveredElem = null;
+        }
         protected  void Start()
         {            
             touch = new Touch();
@@ -81,6 +87,7 @@ namespace Skrptr
                                 {
                                     SkrptrMain.hoveredElem = hitSkrptrElements[0].GetComponent<SkrptrElement>();
                                     SkrptrMain.hoveredElem.HoverEnter();
+                                    Invoke(nameof(LongPress), longPressDelay);
                                 }
                             }
                         }
@@ -104,6 +111,7 @@ namespace Skrptr
                                         SkrptrMain.lastHoveredElem.HoverExit();
                                     SkrptrMain.hoveredElem.HoverExit();
                                     SkrptrMain.hoveredElem = null;
+                                    CancelInvoke(nameof(LongPress));
                                 }
                             }
                             else
@@ -112,6 +120,7 @@ namespace Skrptr
                                     SkrptrMain.lastHoveredElem.HoverExit();
                                 SkrptrMain.hoveredElem.HoverExit();
                                 SkrptrMain.hoveredElem = null;
+                                CancelInvoke(nameof(LongPress));
                             }
                         }
                     }
@@ -129,6 +138,7 @@ namespace Skrptr
                             SkrptrMain.hoveredElem.Click();
                             SkrptrMain.lastHoveredElem = SkrptrMain.hoveredElem;
                             SkrptrMain.hoveredElem = null;
+                            CancelInvoke(nameof(LongPress));
                         }
                     }
 

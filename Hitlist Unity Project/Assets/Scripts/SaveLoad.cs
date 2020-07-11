@@ -6,6 +6,7 @@ using UnityEngine;
 public static class SaveLoad
 {
     public static string EveryDayTasksFileName = "EveryDayTasks";
+    public static string ProjectsListFileName = "ProjectsList";
 
     public static void Save(string message, string fileName)
     {
