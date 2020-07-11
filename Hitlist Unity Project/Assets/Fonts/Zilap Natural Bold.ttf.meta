@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: b1ca17a1512f7534cb4f79a646d4b10d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Zilap Natural
+  fontNames:
+  - Zilap Natural
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1dfdecd102cbd30449c9def9dd1a962f, type: 3}
+  - {fileID: 12800000, guid: 48726be19c88a8f4c832f86f70463847, type: 3}
+  - {fileID: 12800000, guid: 2fe0b7596b59f18498b38fbb3df36845, type: 3}
+  - {fileID: 12800000, guid: 294ddc4dfb9134444b7d6d92d2e603dd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
