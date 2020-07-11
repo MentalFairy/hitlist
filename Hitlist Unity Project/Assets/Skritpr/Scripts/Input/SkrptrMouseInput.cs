@@ -10,10 +10,10 @@ namespace Skrptr
         {
            
 
-            if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) && Input.touchCount != 0)
+            if(Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1) && SkrptrMain.inputType != SkrptrInputType.Mouse)
             {
                 SkrptrMain.inputType = SkrptrInputType.Mouse;
-                Debug.LogError("Setting to mouse");
+                //Debug.LogError("Setting to mouse");
             }
 
             if (SkrptrMain.inputType == SkrptrInputType.Mouse)
