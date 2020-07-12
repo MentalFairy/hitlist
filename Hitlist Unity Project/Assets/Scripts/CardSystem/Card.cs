@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum CardStage { Backlog, ToDo, Testing, Complete,None };
+public enum CardStatus { Accepted, Declined, Neither };
 public class Card : MonoBehaviour
 {
     public string projectName;
@@ -13,6 +14,7 @@ public class Card : MonoBehaviour
     public DateTime creationDate,startDate;
     public int cardTargetHours = 0;
     public bool milestone = false;
+    public CardStatus cardStatus = CardStatus.Neither;
 
     public GameObject backlogItems,toDoItems, testingItems,completeItems;
 
@@ -29,6 +31,6 @@ public class Card : MonoBehaviour
     {
         return projectName + "|" + stage.ToString() + "|" + inputField.text +
                 "|" + creationDate.ToString() + "|" + startDate.ToString() +
-                "|" + cardTargetHours + "|" + milestone + "\n";
+                "|" + cardTargetHours + "|" + milestone + "|"+ cardStatus.ToString() + "\n" ;
     }
 }

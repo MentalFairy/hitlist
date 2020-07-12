@@ -35,6 +35,7 @@ public class Panel_Cards : MonoBehaviour
                 card.startDate = DateTime.Parse(cardData[4]);
                 card.cardTargetHours = int.Parse(cardData[5]);
                 card.milestone = bool.Parse(cardData[6]);
+                card.cardStatus = (CardStatus)Enum.Parse(typeof(CardStatus), cardData[7]);
                 //load data
 
                 switch (card.stage)
@@ -121,9 +122,21 @@ public class Panel_Cards : MonoBehaviour
         {
             if (card.stage == HitListMain.Instance.currentStage && HitListMain.Instance.currentProject == card.projectName)
             {
-                card.gameObject.SetActive(true);
-                card.GetComponent<SkrptrElement>().Unlock();
-                yield return new WaitForSecondsRealtime(delayBetweenCards);
+                if (HitListMain.Instance.currentStage != CardStage.Complete)
+                {
+                    card.gameObject.SetActive(true);
+                    card.GetComponent<SkrptrElement>().Unlock();
+                    yield return new WaitForSecondsRealtime(delayBetweenCards);
+                }
+                else
+                {
+                    if(card.cardStatus == HitListMain.Instance.currentCardStatusFilter)
+                    {
+                        card.gameObject.SetActive(true);
+                        card.GetComponent<SkrptrElement>().Unlock();
+                        yield return new WaitForSecondsRealtime(delayBetweenCards);
+                    }
+                }
             }
         }
     }

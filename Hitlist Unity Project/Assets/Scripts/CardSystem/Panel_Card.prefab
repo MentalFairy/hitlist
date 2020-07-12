@@ -1057,6 +1057,8 @@ GameObject:
   - component: {fileID: 1181751726}
   - component: {fileID: 1181751728}
   - component: {fileID: 1181751727}
+  - component: {fileID: 2952256917671314209}
+  - component: {fileID: 2893433428980663249}
   m_Layer: 5
   m_Name: Button_DeclineTest
   m_TagString: Untagged
@@ -1119,6 +1121,34 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2952256917671314209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181751725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97af7f4d270dce84a98d7d5fa5031e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocked: 0
+  runInitEvents: 0
+--- !u!114 &2893433428980663249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181751725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924dab7c747425644bcef96a3df35265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 1
+  setCardStatusTo: 1
 --- !u!1 &1246794469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5502,6 +5532,7 @@ MonoBehaviour:
   inputField: {fileID: 7410623020650898965}
   cardTargetHours: 0
   milestone: 0
+  cardStatus: 2
   backlogItems: {fileID: 7410623020328788123}
   toDoItems: {fileID: 1047037240}
   testingItems: {fileID: 7944290767085556848}
@@ -6720,6 +6751,8 @@ GameObject:
   - component: {fileID: 2911462078895022377}
   - component: {fileID: 5926424724512323167}
   - component: {fileID: 4102728275025127484}
+  - component: {fileID: 2941466084266455860}
+  - component: {fileID: 5328118004389976653}
   m_Layer: 5
   m_Name: Button_AcceptTest
   m_TagString: Untagged
@@ -6782,6 +6815,34 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2941466084266455860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452495978898401730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97af7f4d270dce84a98d7d5fa5031e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocked: 0
+  runInitEvents: 0
+--- !u!114 &5328118004389976653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452495978898401730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 924dab7c747425644bcef96a3df35265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 1
+  setCardStatusTo: 0
 --- !u!1 &8478502172974195483
 GameObject:
   m_ObjectHideFlags: 0
