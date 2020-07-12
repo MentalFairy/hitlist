@@ -37,6 +37,26 @@ public class Panel_Cards : MonoBehaviour
                 card.milestone = bool.Parse(cardData[6]);
                 //load data
 
+                switch (card.stage)
+                {
+                    case CardStage.Backlog:
+                        card.backlogItems.SetActive(true);
+                        break;
+                    case CardStage.ToDo:
+                        card.toDoItems.SetActive(true);
+                        break;
+                    case CardStage.Testing:
+                        card.testingItems.SetActive(true);
+                        break;
+                    case CardStage.Complete:
+                        card.completeItems.SetActive(true);
+                        break;
+                    case CardStage.None:
+                        break;
+                    default:
+                        break;
+                }
+
                 Debug.Log(card.ToString());
                 cards.Add(card);
             }
@@ -51,12 +71,16 @@ public class Panel_Cards : MonoBehaviour
     public void AddCard(int cardTargetHours, bool milestone)
     {
         Card card = Instantiate(cardPrefab, contentTransform).GetComponent<Card>();
+        if (HitListMain.Instance.currentStage != CardStage.Backlog)
+            card.gameObject.SetActive(false);
+
         card.projectName = HitListMain.Instance.currentProject;
         card.milestone = milestone;
         card.stage = CardStage.Backlog;
         card.inputField.text = "Edit me by longpress";
         card.creationDate = DateTime.Now;
         card.cardTargetHours = cardTargetHours;
+        card.backlogItems.SetActive(true);
         cards.Add(card);        
         SaveCards();
     }
@@ -72,26 +96,32 @@ public class Panel_Cards : MonoBehaviour
         SaveLoad.Save(dataToSave, SaveLoad.CardsFileName);
     }
 
-
-    public void FilterCards(CardStage filter)
+    public void FilterCards()
     {
-        StartCoroutine(nameof(CloseCards),filter);
+        StartCoroutine(nameof(CloseCards));
     }
-    public IEnumerator CloseCards(CardStage filter)
+    public IEnumerator CloseCards()
     {
-        foreach (var card in cards)
-        {
+        Card[] activeCards = contentTransform.GetComponentsInChildren<Card>();
+        foreach (var card in activeCards)        {
+            
             card.GetComponent<SkrptrElement>().Lock();
             yield return new WaitForSecondsRealtime(delayBetweenCards);
         }
-        StartCoroutine(nameof(OpenCards), filter);
+        yield return new WaitForSecondsRealtime(0.25f);
+        foreach (var card in activeCards)
+        {
+            card.gameObject.SetActive(false);
+        }
+        StartCoroutine(nameof(OpenCards));
     }
-    public IEnumerator OpenCards(CardStage filter)
+    public IEnumerator OpenCards()
     {
         foreach (var card in cards)
         {
-            if (card.stage == filter)
+            if (card.stage == HitListMain.Instance.currentStage && HitListMain.Instance.currentProject == card.projectName)
             {
+                card.gameObject.SetActive(true);
                 card.GetComponent<SkrptrElement>().Unlock();
                 yield return new WaitForSecondsRealtime(delayBetweenCards);
             }

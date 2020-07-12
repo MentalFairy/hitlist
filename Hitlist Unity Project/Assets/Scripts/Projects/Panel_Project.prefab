@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 3705648348786430891}
   - component: {fileID: 8344876505236554227}
   - component: {fileID: 1500582893705078206}
+  - component: {fileID: 114797525457934646}
   m_Layer: 5
   m_Name: Panel_Project
   m_TagString: Untagged
@@ -368,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e4ea57282452d4891c34e54c381cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skrptrEvent: 2048
+  skrptrEvent: 1
   triggerTargets:
   - targetGO: {fileID: 0}
     triggerEvent: 128
@@ -415,6 +416,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skrptrEvent: 1
+--- !u!114 &114797525457934646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2448346928787257670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a6c2487aa5ed104eb629e3cf536b1be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 1
+  projectName: 
 --- !u!1 &3929837515678187255
 GameObject:
   m_ObjectHideFlags: 0

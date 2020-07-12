@@ -9,4 +9,5 @@ public class HitListMain : Singleton<HitListMain>
     public Panel_Cards panelCards;
 
     public string currentProject;
+    public CardStage currentStage;
 }

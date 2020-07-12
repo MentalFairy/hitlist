@@ -8,6 +8,7 @@ public class FilterCardListByStage : SkrptrAction
     public CardStage filter;
     public override void Execute()
     {
-        HitListMain.Instance.panelCards.FilterCards(filter);
+        HitListMain.Instance.currentStage = filter;
+        HitListMain.Instance.panelCards.FilterCards();       
     }
 }

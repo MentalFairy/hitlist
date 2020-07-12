@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum CardStage { Backlog, ToDo, Testing, Complete };
+public enum CardStage { Backlog, ToDo, Testing, Complete,None };
 public class Card : MonoBehaviour
 {
     public string projectName;
@@ -19,7 +19,11 @@ public class Card : MonoBehaviour
 
     public void Start()
     {
-        
+        inputField.onEndEdit.AddListener(delegate { OnInputFieldEndEdit(); });
+    }
+    public void OnInputFieldEndEdit()
+    {
+        HitListMain.Instance.panelCards.SaveCards();
     }
     public override string ToString()
     {
