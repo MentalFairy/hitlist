@@ -25,13 +25,16 @@ public class Panel_ProjectSelection : MonoBehaviour
             {
                 string[] projectData = projectsData[i].Split('|');
                 Project project = Instantiate(projectListingPrefab, contentTransform).GetComponent<Project>();
-                project.GetComponent<SkrptrTrigger>().triggerTargets[0].targetGO = contentTransform.gameObject;
+                project.GetComponent<SkrptrTrigger>().triggerTargets[0].targetGO = this.gameObject;
                 project.projectName = projectData[0];
                 project.inputField.text = projectData[0];
                 projects.Add(project);
             }
             if (projects.Count > 0)
+            {
                 projects[0].GetComponent<SkrptrElement>().Check();
+                HitListMain.Instance.currentProject = projects[0].inputField.text;
+            }
         }
     }
     public void DeleteProject(Project project)
@@ -43,7 +46,7 @@ public class Panel_ProjectSelection : MonoBehaviour
     public void AddProject()
     {
         projects.Add(Instantiate(projectListingPrefab, contentTransform).GetComponent<Project>());
-        projects[projects.Count - 1].GetComponent<SkrptrTrigger>().triggerTargets[0].targetGO = contentTransform.gameObject;
+        projects[projects.Count - 1].GetComponent<SkrptrTrigger>().triggerTargets[0].targetGO = this.gameObject;
         SaveProjects();
         StartCoroutine(nameof(ForceUpdateUI));
     }
