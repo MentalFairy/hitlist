@@ -2783,6 +2783,7 @@ GameObject:
   - component: {fileID: 327273123}
   - component: {fileID: 327273122}
   - component: {fileID: 327273124}
+  - component: {fileID: 327273127}
   m_Layer: 5
   m_Name: Btn_ClearAllBkg
   m_TagString: Untagged
@@ -2898,6 +2899,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327273120}
   m_CullTransparentMesh: 0
+--- !u!114 &327273127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327273120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4be7aec3f1d75d4ab09dad8f67d1762, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 1
 --- !u!1 &330585046
 GameObject:
   m_ObjectHideFlags: 0
@@ -3131,7 +3145,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &359119155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4684,7 +4698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &556476349
 RectTransform:
   m_ObjectHideFlags: 0

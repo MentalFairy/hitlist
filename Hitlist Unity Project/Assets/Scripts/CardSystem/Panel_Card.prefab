@@ -5894,6 +5894,8 @@ GameObject:
   - component: {fileID: 7410623021474915968}
   - component: {fileID: 7410623021474915974}
   - component: {fileID: 7410623021474915969}
+  - component: {fileID: 909660168789454714}
+  - component: {fileID: 5619610313969185264}
   m_Layer: 5
   m_Name: Button_Delete
   m_TagString: Untagged
@@ -5956,6 +5958,33 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &909660168789454714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410623021474915971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97af7f4d270dce84a98d7d5fa5031e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isLocked: 0
+  runInitEvents: 0
+--- !u!114 &5619610313969185264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410623021474915971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da0364ad6210a24aaad0a6536003581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 1
 --- !u!1 &7410623021518708355
 GameObject:
   m_ObjectHideFlags: 0

@@ -69,6 +69,16 @@ public class Panel_Cards : MonoBehaviour
         Destroy(card.gameObject);
         SaveCards();
     }
+    public void ClearCompletedCards()
+    {
+        Card[] activeCards = contentTransform.GetComponentsInChildren<Card>();
+        foreach (var card in activeCards)
+        {
+            cards.Remove(card);
+            Destroy(card.gameObject);
+        }
+        SaveCards();
+    }
     public void AddCard(int cardTargetHours, bool milestone)
     {
         Card card = Instantiate(cardPrefab, contentTransform).GetComponent<Card>();

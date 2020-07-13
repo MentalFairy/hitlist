@@ -1,18 +1,12 @@
-﻿using System.Collections;
+﻿using Skrptr;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeleteCard : MonoBehaviour
+public class DeleteCard : SkrptrAction
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Execute()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        HitListMain.Instance.panelCards.DeleteCard(GetComponentInParent<Card>());
     }
 }
