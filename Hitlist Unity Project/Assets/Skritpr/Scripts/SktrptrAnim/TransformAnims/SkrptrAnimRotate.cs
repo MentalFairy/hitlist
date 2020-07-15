@@ -30,9 +30,9 @@ namespace Skrptr
         {
             base.Start();
             animData = new List<AnimData>();
-            for (int i = 0; i < animData.Count; i++)
+            for (int i = 0; i < animDataRotate.Length; i++)
             {
-                animData[i] = new AnimData();
+                animData.Add(new AnimData());
                 animData[i].delay = animDataRotate[i].delay;
                 animData[i].duration = animDataRotate[i].duration;
                 animData[i].target = animDataRotate[i].target;

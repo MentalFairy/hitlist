@@ -28,8 +28,9 @@ namespace Skrptr
         {
             base.Start();
             animData = new List<AnimData>();
-            for (int i = 0; i < animData.Count; i++)
+            for (int i = 0; i < animDataColor.Length; i++)
             {
+                animData.Add(new AnimData());
                 animData[i].delay = animDataColor[i].delay;
                 animData[i].duration = animDataColor[i].duration;
                 animData[i].target = animDataColor[i].target;

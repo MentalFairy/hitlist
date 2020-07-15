@@ -32,6 +32,7 @@ namespace Skrptr
                             targetPosition = Vector2.zero;
                             break;
                     }
+                    DOTween.defaultEaseType = ease;
                     animDataSlide[i].target.GetComponent<RectTransform>().DOMove(targetPosition, animDataSlide[i].duration).SetEase(ease).SetDelay(animDataSlide[i].delay);
                 }
                 else
@@ -45,8 +46,9 @@ namespace Skrptr
         {
             base.Start();
             animData = new List<AnimData>();
-            for (int i = 0; i < animData.Count; i++)
+            for (int i = 0; i < animDataSlide.Length; i++)
             {
+                animData.Add(new AnimData());
                 animData[i].delay = animDataSlide[i].delay;
                 animData[i].duration = animDataSlide[i].duration;
                 animData[i].target = animDataSlide[i].target;

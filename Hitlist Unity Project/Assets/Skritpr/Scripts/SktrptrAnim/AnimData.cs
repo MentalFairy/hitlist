@@ -10,7 +10,7 @@ namespace Skrptr
     [System.Serializable]
     public class AnimDataColor : AnimData
     {
-        public Color targetColor;
+        public Color targetColor;     
     }
     [System.Serializable]
     public class AnimDataVector3 : AnimData

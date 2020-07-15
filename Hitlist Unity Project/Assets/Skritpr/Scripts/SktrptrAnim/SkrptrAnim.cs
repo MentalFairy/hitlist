@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
+
 namespace Skrptr
 {
     public class SkrptrAnim : MonoBehaviour
@@ -12,6 +14,8 @@ namespace Skrptr
         protected Ease ease = Ease.OutQuad;
         protected List<AnimData> animData;
         private bool isInit = false;
+
+        private float longestAnim = -1;
 
         //protected void AddSelfToTargets()
         //{
@@ -25,11 +29,30 @@ namespace Skrptr
         //}
         public virtual void Start()
         {
-          // Load data into animsData
+            if (skrptrEvent == SkrptrEvent.Loop)
+            {
+                Debug.Log("Found loop anim on " + gameObject.name);
+                StartCoroutine(nameof(LoopAnimations), longestAnim);               
+            }
+        }
+        protected IEnumerator LoopAnimations(float loopInterval)
+        {            
+            if (longestAnim == -1)
+            {
+                yield return null;
+                Debug.Log("Executing " + longestAnim + " " + animData.Count);
+                longestAnim = 0;
+                foreach (var item in animData)
+                {
+                    if (item.delay + item.duration > longestAnim)
+                        longestAnim = item.delay + item.duration;
+                }
+            }
+
+            InvokeRepeating(nameof(Execute), 0, longestAnim);
         }
         public virtual void Execute()
         {
-
         }
         //public virtual void OnValidate()
         //{

@@ -20,6 +20,7 @@
         Check = 2048,
         Uncheck = 4096,
         LongPress = 8192,
+        Loop = 16384,
     };
     [System.Flags]
     public enum SkrptrDirection
