@@ -6,12 +6,9 @@ using UnityEngine;
 public class FilterCardListByProject : SkrptrAction
 {
     public string projectName;
-    private void Start()
-    {
-        projectName = GetComponent<Project>().inputField.text;
-    }
     public override void Execute()
     {
+        projectName = GetComponent<Project>().inputField.text;
         HitListMain.Instance.currentProject = projectName;
         HitListMain.Instance.panelCards.FilterCards();
     }

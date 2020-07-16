@@ -41,6 +41,7 @@ public class Panel_ProjectSelection : MonoBehaviour
     {
         projects.Remove(project);
         Destroy(project.gameObject);
+        StartCoroutine(nameof(ForceUpdateUI));
         SaveProjects();
     }
     public void AddProject()

@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d35f105b1979e49831b523338ffc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skrptrEvent: 1
+  skrptrEvent: 2048
 --- !u!114 &114797525457934646
 MonoBehaviour:
   m_ObjectHideFlags: 0

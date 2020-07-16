@@ -36,6 +36,9 @@ public class Panel_Cards : MonoBehaviour
                 card.cardTargetHours = int.Parse(cardData[5]);
                 card.milestone = bool.Parse(cardData[6]);
                 card.cardStatus = (CardStatus)Enum.Parse(typeof(CardStatus), cardData[7]);
+
+                // dependencies
+                card.Init();
                 //load data
 
                 switch (card.stage)
@@ -67,6 +70,7 @@ public class Panel_Cards : MonoBehaviour
     {
         cards.Remove(card);
         Destroy(card.gameObject);
+        
         SaveCards();
     }
     public void ClearCompletedCards()
@@ -92,6 +96,7 @@ public class Panel_Cards : MonoBehaviour
         card.creationDate = DateTime.Now;
         card.cardTargetHours = cardTargetHours;
         card.backlogItems.SetActive(true);
+        card.Init();
         cards.Add(card);        
         SaveCards();
     }
