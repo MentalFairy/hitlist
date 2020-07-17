@@ -8,6 +8,7 @@ public static class SaveLoad
     public static string EveryDayTasksFileName = "EveryDayTasks";
     public static string ProjectsListFileName = "ProjectsList";
     public static string CardsFileName = "Cards";
+    public static string SoldierFileName = "Soldier";
 
     public static void Save(string message, string fileName)
     {
