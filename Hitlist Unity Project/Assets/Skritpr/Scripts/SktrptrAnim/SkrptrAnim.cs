@@ -40,7 +40,7 @@ namespace Skrptr
             if (longestAnim == -1)
             {
                 yield return null;
-                Debug.Log("Executing " + longestAnim + " " + animData.Count);
+                //Debug.Log("Executing " + longestAnim + " " + animData.Count);
                 longestAnim = 0;
                 foreach (var item in animData)
                 {

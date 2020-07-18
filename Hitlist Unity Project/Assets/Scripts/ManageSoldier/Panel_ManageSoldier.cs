@@ -17,8 +17,13 @@ public class Panel_ManageSoldier : MonoBehaviour
     public Image[] fillHpBars;
     public Text[] balanceTexts;
     public GameObject chickenIcon;
-    public List<GameObject> chickens;
     public Transform chickenSlotsTransform;
+    public List<GameObject> chickens;
+    public GameObject[] levels;
+    public Text levelText;
+
+
+    public int characterLevel = 1;
 
 
     public DateTime lastDrain;
@@ -39,6 +44,13 @@ public class Panel_ManageSoldier : MonoBehaviour
             balance = int.Parse(soldierData[2]);
             chickenCount = int.Parse(soldierData[3]);
             chickenRegen = double.Parse(soldierData[4]);
+            characterLevel = int.Parse(soldierData[5]);
+
+            for (int i = 0; i < chickenCount; i++)
+            {
+                chickens.Add(Instantiate(chickenIcon, chickenSlotsTransform));
+            }
+            InitLevels();
         }
         else
         {
@@ -47,12 +59,21 @@ public class Panel_ManageSoldier : MonoBehaviour
         UpdateBalances();
         InvokeRepeating(nameof(Drain), 0, 1);
     }
+    public void InitLevels()
+    {
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i].SetActive(false);
+        }
+        levelText.text = characterLevel.ToString();
+        levels[characterLevel-1].SetActive(true);
+    }
     public void BuyChicken()
     {
-        if (chickenCount < maxChicken)
+        if (chickenCount < maxChicken && balance > chickenPrice)
         {
             chickenCount++;
-            Instantiate(chickenIcon, chickenSlotsTransform);
+            chickens.Add(Instantiate(chickenIcon, chickenSlotsTransform));
             balance -= chickenPrice;
             UpdateBalances();
             SaveSoldier();
@@ -81,18 +102,26 @@ public class Panel_ManageSoldier : MonoBehaviour
     }
     public void Drain()
     {
-        double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute / 60f;
-        HP -= drain;
-        Debug.Log("Drained: " + drain);
-        lastDrain = DateTime.Now;
-        SaveSoldier();
-        UpdateHPBars();
+        if (HP > 0)
+        {
+            double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute / 60f;
+            HP -= drain;
+            //Debug.Log("Drained: " + drain);
+            lastDrain = DateTime.Now;
+            SaveSoldier();
+            UpdateHPBars();
+        }
+        else
+        {
+            HP = 0;
+            //die
+        }
     }
     public void SaveSoldier()
     {
         string dataToSave = "";
         dataToSave += HP + "|" + lastDrain.ToString() + "|" + balance.ToString() + "|" + chickenCount.ToString()
-        + "|" + chickenRegen.ToString();
+        + "|" + chickenRegen.ToString() + "|" + characterLevel;
         SaveLoad.Save(dataToSave, SaveLoad.SoldierFileName);
     }
     public void UpdateHPBars()

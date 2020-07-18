@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum CardStage { Backlog, ToDo, Testing, Complete,None };
+public enum CardStage { Backlog, ToDo, Testing, Complete,Cleared,None };
 public enum CardStatus { Accepted, Declined, Neither };
 public class Card : MonoBehaviour
 {

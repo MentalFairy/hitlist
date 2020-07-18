@@ -26,7 +26,7 @@ public static class SaveLoad
         }
         w.Write(message);
         w.Close();
-        Debug.Log("File saved: " + filePath);
+        //Debug.Log("File saved: " + filePath);
 
     }
     public static string Load(string fileName)
