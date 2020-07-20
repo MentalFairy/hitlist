@@ -61,7 +61,7 @@ public class Panel_Cards : MonoBehaviour
                         break;
                 }
 
-                Debug.Log(card.ToString());
+                //Debug.Log(card.ToString());
                 cards.Add(card);
             }
         }

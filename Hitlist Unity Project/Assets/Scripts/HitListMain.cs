@@ -9,6 +9,7 @@ public class HitListMain : Singleton<HitListMain>
     public Panel_ProjectSelection panelProjectSelection;
     public Panel_Cards panelCards;
     public Panel_ManageSoldier panelManageSoldier;
+    public Panel_CustomerDelta panelCustomerDelta;
 
     public string currentProject;
     public CardStage currentStage;

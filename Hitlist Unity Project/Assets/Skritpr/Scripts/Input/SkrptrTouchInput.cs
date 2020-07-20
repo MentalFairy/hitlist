@@ -23,7 +23,6 @@ namespace Skrptr
         protected  void Start()
         {            
             touch = new Touch();
-            Debug.Log("Started TOUCH INPUT");
             hitSkrptrElements = new List<GameObject>();
             raycastResults = new List<RaycastResult>();
             graphicRaycasters = FindObjectsOfType<GraphicRaycaster>();

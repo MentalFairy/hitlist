@@ -31,7 +31,7 @@ namespace Skrptr
                 {
                     if ((runInitEvents & skrptrEvent) == skrptrEvent)
                     {
-                        Debug.Log("Running " + skrptrEvent + " on " + gameObject.name);
+                        //Debug.Log("Running " + skrptrEvent + " on " + gameObject.name);
                         Invoke(skrptrEvent.ToString(), 0);
                     }
                 }

@@ -14,17 +14,19 @@ public class Panel_ManageSoldier : MonoBehaviour
     public int maxChicken = 12;
     public int chickenPrice = 50;
 
+    public int customerTarget = 0;
+    public int currentCustomers = 0;
+
     public Image[] fillHpBars;
     public Text[] balanceTexts;
     public GameObject chickenIcon;
     public Transform chickenSlotsTransform;
     public List<GameObject> chickens;
     public GameObject[] levels;
-    public Text levelText;
-
+    public Text levelLabel, currentCustomersLabel,customerCurrentAndTarget;
+    public InputField targetCustomersInputField;
 
     public int characterLevel = 1;
-
 
     public DateTime lastDrain;
     private void Awake()
@@ -46,6 +48,9 @@ public class Panel_ManageSoldier : MonoBehaviour
             chickenRegen = double.Parse(soldierData[4]);
             characterLevel = int.Parse(soldierData[5]);
 
+            customerTarget = int.Parse(soldierData[6]);
+            currentCustomers = int.Parse(soldierData[7]);
+            InitCustomerData();
             for (int i = 0; i < chickenCount; i++)
             {
                 chickens.Add(Instantiate(chickenIcon, chickenSlotsTransform));
@@ -59,13 +64,19 @@ public class Panel_ManageSoldier : MonoBehaviour
         UpdateBalances();
         InvokeRepeating(nameof(Drain), 0, 1);
     }
+    public void InitCustomerData()
+    {
+        targetCustomersInputField.text = customerTarget.ToString();
+        currentCustomersLabel.text = currentCustomers.ToString();
+        customerCurrentAndTarget.text = currentCustomers.ToString() + "/" + customerTarget.ToString();
+    }
     public void InitLevels()
     {
         for (int i = 0; i < levels.Length; i++)
         {
             levels[i].SetActive(false);
         }
-        levelText.text = characterLevel.ToString();
+        levelLabel.text = characterLevel.ToString();
         levels[characterLevel-1].SetActive(true);
     }
     public void BuyChicken()
@@ -121,7 +132,7 @@ public class Panel_ManageSoldier : MonoBehaviour
     {
         string dataToSave = "";
         dataToSave += HP + "|" + lastDrain.ToString() + "|" + balance.ToString() + "|" + chickenCount.ToString()
-        + "|" + chickenRegen.ToString() + "|" + characterLevel;
+        + "|" + chickenRegen.ToString() + "|" + characterLevel + "|" + customerTarget.ToString() + "|" + currentCustomers.ToString();
         SaveLoad.Save(dataToSave, SaveLoad.SoldierFileName);
     }
     public void UpdateHPBars()

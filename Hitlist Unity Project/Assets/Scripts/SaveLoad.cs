@@ -9,6 +9,7 @@ public static class SaveLoad
     public static string ProjectsListFileName = "ProjectsList";
     public static string CardsFileName = "Cards";
     public static string SoldierFileName = "Soldier";
+    public static string CustomerDeltaFileName = "CustomerDeltas";
 
     public static void Save(string message, string fileName)
     {
