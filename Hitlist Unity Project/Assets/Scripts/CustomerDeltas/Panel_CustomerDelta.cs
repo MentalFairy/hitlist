@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class Panel_CustomerDelta : MonoBehaviour
 {
-    public Dictionary<DateTime, int> customerDeltas;
+    public List<CustomerDelta> customerDeltas;
     public InputField valueInputField;
     public Sprite buttonTextWin, buttonTextLose, headerWin, headerLose;
     public Image buttonText, headerText;
@@ -20,7 +20,7 @@ public class Panel_CustomerDelta : MonoBehaviour
         valueInputField.text = "1";
         CheckValue();
 
-        customerDeltas = new Dictionary<DateTime, int>();
+        customerDeltas = new List<CustomerDelta>();
         string savedData = SaveLoad.Load(SaveLoad.CustomerDeltaFileName);
         if (savedData != null)
         {
@@ -30,7 +30,7 @@ public class Panel_CustomerDelta : MonoBehaviour
                 string[] delta = deltas[i].Split('|');
                 DateTime dateTime = DateTime.Parse(delta[0]);
                 int value = int.Parse(delta[1]);
-                customerDeltas.Add(dateTime, value);
+                customerDeltas.Add(new CustomerDelta(dateTime, value));
                 Debug.LogError("Added delta: " + dateTime.ToString() + " " + value);
             }
         }
@@ -40,7 +40,7 @@ public class Panel_CustomerDelta : MonoBehaviour
         int aux = 0;
         foreach (var item in customerDeltas)
         {
-            aux += item.Value;
+            aux += item.value;
         }
         HitListMain.Instance.panelManageSoldier.currentCustomers = aux;
         HitListMain.Instance.panelManageSoldier.InitCustomerData();
@@ -68,18 +68,8 @@ public class Panel_CustomerDelta : MonoBehaviour
     public void AddDelta()
     {
         DateTime currentDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-        if (customerDeltas.ContainsKey(currentDate))
-        {
-            //alter
-            customerDeltas[currentDate] += int.Parse(valueInputField.text);
-            Debug.Log("Delta updated");
-        }
-        else
-        {
-            // add new
-            customerDeltas.Add(currentDate, int.Parse(valueInputField.text));
-            Debug.Log("New Delta added");
-        }
+        customerDeltas.Add(new CustomerDelta(currentDate, int.Parse(valueInputField.text)));
+
         valueInputField.text = "1";
         CheckValue();
         SaveDeltas();
@@ -90,8 +80,19 @@ public class Panel_CustomerDelta : MonoBehaviour
         string dataToSave = "";
         foreach (var item in customerDeltas)
         {
-            dataToSave += item.Key.ToString() + "|" + item.Value.ToString() + "\n";
+            dataToSave += item.date.ToString() + "|" + item.value.ToString() + "\n";
         }
         SaveLoad.Save(dataToSave, SaveLoad.CustomerDeltaFileName);
+    }
+}
+public class CustomerDelta
+{
+    public DateTime date;
+    public int value;
+
+    public CustomerDelta(DateTime date, int value)
+    {
+        this.date = date;
+        this.value = value;
     }
 }
