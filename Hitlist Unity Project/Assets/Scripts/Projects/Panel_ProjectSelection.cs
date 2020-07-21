@@ -1,4 +1,5 @@
 ﻿using Skrptr;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class Panel_ProjectSelection : MonoBehaviour
     {
         projects = new List<Project>();
         HitListMain.Instance.panelProjectSelection = this;
+        InvokeRepeating(nameof(SaveProjects), 0f, 1f);
     }
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,9 @@ public class Panel_ProjectSelection : MonoBehaviour
                 project.GetComponent<SkrptrTrigger>().triggerTargets[0].targetGO = this.gameObject;
                 project.projectName = projectData[0];
                 project.inputField.text = projectData[0];
+                project.creationDate = DateTime.Parse(projectData[1]);
+                project.leadTime = double.Parse(projectData[2]);
+                project.lastLeadCounter = DateTime.Parse(projectData[3]);
                 projects.Add(project);
             }
             if (projects.Count > 0)
@@ -56,7 +61,7 @@ public class Panel_ProjectSelection : MonoBehaviour
         string datatToSave = "";
         foreach (var project in projects)
         {
-            datatToSave += project.projectName + "|" + project.creationDate + "|" + project.leadTime + "\n";
+            datatToSave += project.ToString();
         }
         SaveLoad.Save(datatToSave, SaveLoad.ProjectsListFileName);
     }
