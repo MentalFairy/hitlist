@@ -36,6 +36,8 @@ public class Panel_Cards : MonoBehaviour
                 card.cardTargetHours = int.Parse(cardData[5]);
                 card.milestone = bool.Parse(cardData[6]);
                 card.cardStatus = (CardStatus)Enum.Parse(typeof(CardStatus), cardData[7]);
+                card.leadTime = double.Parse(cardData[8]);
+                card.lastLeadCounter = DateTime.Parse(cardData[9]);
 
                 // dependencies
                 card.Init();
@@ -65,6 +67,7 @@ public class Panel_Cards : MonoBehaviour
                 cards.Add(card);
             }
         }
+        InvokeRepeating(nameof(SaveCards),0, 1f);
     }
     public void DeleteCard(Card card)
     {
@@ -105,9 +108,7 @@ public class Panel_Cards : MonoBehaviour
         string dataToSave = "";
         for (int i = 0; i < cards.Count; i++)
         {
-            Debug.Log("i: " + i);
             dataToSave += cards[i].ToString();
-            Debug.Log(dataToSave);
         }
         SaveLoad.Save(dataToSave, SaveLoad.CardsFileName);
     }

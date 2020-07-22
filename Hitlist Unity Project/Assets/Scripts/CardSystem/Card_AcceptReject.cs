@@ -17,6 +17,7 @@ public class Card_AcceptReject : SkrptrAction
     public IEnumerator DeactiveGO(Card card)
     {
         yield return new WaitForSecondsRealtime(0.25f);
+        card.Init();
         card.testingItems.SetActive(false);
         card.completeItems.SetActive(true);
         card.gameObject.SetActive(false);

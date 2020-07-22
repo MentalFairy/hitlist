@@ -50,7 +50,7 @@ public class Project : MonoBehaviour
             if (minutes < 10)
                 minutesString = "0" + minutes.ToString();
             else
-                minutesString = seconds.ToString();
+                minutesString = minutes.ToString();
             if (hours < 10)
                 hoursString = "0" + hours.ToString();
             else
