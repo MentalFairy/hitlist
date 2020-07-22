@@ -78,11 +78,20 @@ public class Panel_Cards : MonoBehaviour
     }
     public void ClearCompletedCards()
     {
+        StartCoroutine(nameof(LockAndDisableActiveCards));
+    }
+    public IEnumerator LockAndDisableActiveCards()
+    {
         Card[] activeCards = contentTransform.GetComponentsInChildren<Card>();
         foreach (var card in activeCards)
         {
-            cards.Remove(card);
-            Destroy(card.gameObject);
+            card.stage = CardStage.Cleared;
+            card.GetComponent<SkrptrElement>().Lock();
+        }
+        yield return new WaitForSecondsRealtime(0.25f);
+        foreach (var card in activeCards)
+        {
+            card.gameObject.SetActive(false);
         }
         SaveCards();
     }

@@ -31,7 +31,7 @@ namespace Skrptr
         {
             if (skrptrEvent == SkrptrEvent.Loop)
             {
-                Debug.Log("Found loop anim on " + gameObject.name);
+                //Debug.Log("Found loop anim on " + gameObject.name);
                 StartCoroutine(nameof(LoopAnimations), longestAnim);               
             }
         }
