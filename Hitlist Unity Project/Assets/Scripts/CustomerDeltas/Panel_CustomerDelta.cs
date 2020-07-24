@@ -31,7 +31,7 @@ public class Panel_CustomerDelta : MonoBehaviour
                 DateTime dateTime = DateTime.Parse(delta[0]);
                 int value = int.Parse(delta[1]);
                 customerDeltas.Add(new CustomerDelta(dateTime, value));
-                Debug.LogError("Added delta: " + dateTime.ToString() + " " + value);
+                //Debug.LogError("Added delta: " + dateTime.ToString() + " " + value);
             }
         }
     }
