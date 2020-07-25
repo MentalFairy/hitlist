@@ -12,7 +12,7 @@ public class Progress : MonoBehaviour
     public float percent = -1;
     private void Update()
     {
-        currentProjectCards = HitListMain.Instance.panelCards.cards.Where(card => card.projectName == HitListMain.Instance.currentProject).ToList();
+        currentProjectCards = HitListMain.Instance.panelCards.cards.Where(card => card.projectName == HitListMain.Instance.currentProject && card.stage != CardStage.Cleared).ToList();
         if (currentProjectCards != null && currentProjectCards.Count > 0)
         {
             percent = (float)(currentProjectCards.Where(card => card.stage == CardStage.Complete).ToArray().Length) / (float)currentProjectCards.Count;

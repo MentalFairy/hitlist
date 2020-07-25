@@ -12,9 +12,15 @@ public class HitListMain : Singleton<HitListMain>
     public Panel_ManageSoldier panelManageSoldier;
     public Panel_CustomerDelta panelCustomerDelta;
 
+    public Panel_MetricsYear panelMetricsYear;
+    public Panel_MetricsMonthly panelMetricsMonth;
+    public Panel_MetricsRisk panelMetricsDay;
+
     public Text leadTimeDays,leadTimeHours;
 
     public string currentProject;
     public CardStage currentStage;
     public CardStatus currentCardStatusFilter = CardStatus.Accepted;
+
+
 }

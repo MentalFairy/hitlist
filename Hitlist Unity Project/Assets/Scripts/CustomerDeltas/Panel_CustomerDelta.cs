@@ -34,6 +34,21 @@ public class Panel_CustomerDelta : MonoBehaviour
                 //Debug.LogError("Added delta: " + dateTime.ToString() + " " + value);
             }
         }
+        GenerateDeltas();
+    }
+    public void GenerateDeltas()
+    {
+
+        customerDeltas.Clear();
+        for (int i = 1; i <= 12; i++)
+        {
+            for (int j = 1; j <= DateTime.DaysInMonth(2020,i); j++)
+            {
+                customerDeltas.Add(new CustomerDelta(new DateTime(2020, i, j), UnityEngine.Random.Range(-10, 0)));
+                customerDeltas.Add(new CustomerDelta(new DateTime(2020, i, j), UnityEngine.Random.Range(0, 30)));
+            }
+        }
+        SaveDeltas();
     }
     public void CountCustomers()
     {
@@ -44,13 +59,6 @@ public class Panel_CustomerDelta : MonoBehaviour
         }
         HitListMain.Instance.panelManageSoldier.currentCustomers = aux;
         HitListMain.Instance.panelManageSoldier.InitCustomerData();
-    }
-    public void AddDeltas()
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            AddDelta();
-        }
     }
     public void CheckValue()
     {
