@@ -403,6 +403,8 @@ MonoBehaviour:
   projectName: 
   leadTime: 0
   inputField: {fileID: 2026244556764314297}
+  cardsInProject: []
+  uncompletedCards: []
 --- !u!114 &1500582893705078206
 MonoBehaviour:
   m_ObjectHideFlags: 0
