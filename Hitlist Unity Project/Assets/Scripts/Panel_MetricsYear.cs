@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class Panel_MetricsYear : MonoBehaviour
 {
+    public LineRenderer lineRenderer;
     public Dropdown graphDD, yearDD;
     public Slider slider;
     public SkrptrElement dayMetrics, monthMetrics;
@@ -23,7 +24,9 @@ public class Panel_MetricsYear : MonoBehaviour
     public int wonThisYear, lostThisYear;
 
     public int[] clientsActualByMonth;
-
+    public Vector3[] points;
+    public float textureWidth = 950f, textureHeight = 410f;
+    public Sprite redBorder, greenBorder;
     private void Awake()
     {
         HitListMain.Instance.panelMetricsYear = this;
@@ -51,6 +54,7 @@ public class Panel_MetricsYear : MonoBehaviour
             UpdateYValues();
         }
         Invoke(nameof(OnYearDDValueChanged), 1);
+        Invoke(nameof(OnSliderValueChanged), 1.1f);
     }
 
     private void OnSliderValueChanged()
@@ -80,10 +84,29 @@ public class Panel_MetricsYear : MonoBehaviour
             actualStartValue.text = clientsActualByMonth[(int)(slider.value - 2)].ToString();
         }
         actualEndValue.text = clientsActualByMonth[(int)(slider.value-1)].ToString();
-        if (slider.value == 1)
-            resultValue.text = clientsActualByMonth[0].ToString();
+        resultValue.text = (wonByMonth[(int)slider.value - 1] + lostByMonth[(int)slider.value - 1]).ToString();
+
+        //colors
+        if (int.Parse(projStartValue.text) > int.Parse(actualStartValue.text))
+            actualStartValue.color = Color.red;
         else
-            resultValue.text = (clientsActualByMonth[(int)(slider.value-1)] - clientsActualByMonth[(int)(slider.value - 2)]).ToString();
+            actualStartValue.color = Color.green;
+        if (int.Parse(projEndValue.text) > int.Parse(actualEndValue.text))
+            actualEndValue.color = Color.red;
+        else
+            actualEndValue.color = Color.green;
+
+        if(int.Parse(yearValue.text) > int.Parse(decTarget.text))
+        {
+            yearValue.transform.parent.GetComponent<Image>().sprite = greenBorder;
+            yearValue.color = Color.green;
+        }
+        else
+        {
+            yearValue.transform.parent.GetComponent<Image>().sprite = redBorder;
+            yearValue.color = Color.red;
+        }
+
     }
 
     private void OnEndEditDecTarget()
@@ -93,7 +116,7 @@ public class Panel_MetricsYear : MonoBehaviour
 
     private void OnEndEditJanTarget()
     {
-        UpdateYValues();
+        UpdateYValues();        
     }
     private void UpdateYValues()
     {
@@ -104,6 +127,7 @@ public class Panel_MetricsYear : MonoBehaviour
         yValues[3].text = (int.Parse(janTarget.text) + (float)delta * 0.6f).ToString("0");
         yValues[4].text = (int.Parse(janTarget.text) + (float)delta * 0.8f).ToString("0");
         yValues[5].text = decTarget.text;
+        OnYearDDValueChanged();
         SaveData();
     }
     public void SaveData()
@@ -115,6 +139,9 @@ public class Panel_MetricsYear : MonoBehaviour
 
     private void OnYearDDValueChanged()
     {
+        wonByMonth = new int[12];
+        lostByMonth = new int[12];
+        clientsActualByMonth = new int[12];
         //Debug.Log((yearDD.value + 2020).ToString());
         List<CustomerDelta> customerDeltasThisYear = HitListMain.Instance.panelCustomerDelta.customerDeltas.Where(d => d.date.Year == yearDD.value + 2020).ToList<CustomerDelta>();
         //Debug.Log("Deltas: " + customerDeltasThisYear.Count);
@@ -132,12 +159,17 @@ public class Panel_MetricsYear : MonoBehaviour
             lossLabels[i-1].text = lostByMonth[i - 1].ToString();
         }
         int sum = 0;
+        points = new Vector3[clientsActualByMonth.Length+1];
+        points[0] = new Vector3(0, 0,0);
         for (int i = 0; i < 12; i++)
         {
             sum += wonByMonth[i] + lostByMonth[i];
             clientsActualByMonth[i] = sum;
+            points[i+1] = new Vector3((i+1) / 12f * textureWidth, clientsActualByMonth[i] / float.Parse(decTarget.text) * textureHeight,0);
         }
+        lineRenderer.SetPositions(points);
     }
+
 
     private void OnGraphDDValueChanged()
     {

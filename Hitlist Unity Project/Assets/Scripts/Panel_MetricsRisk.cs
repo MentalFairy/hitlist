@@ -14,6 +14,7 @@ public class Panel_MetricsRisk : MonoBehaviour
     public int[] storiesCategorizedCounter;
     public Text[] storiesCounterLabels,percentCounterLabels, riskCounterLabels,monthLabels;
     public Image[] riskImages;
+    public Text yearLabel;
 
     private void Awake()
     {
@@ -53,7 +54,6 @@ public class Panel_MetricsRisk : MonoBehaviour
         storiesCategorizedCounter = new int[targetHours.Length];
         List<Card> cards = HitListMain.Instance.panelCards.cards.Where(c => c.creationDate.Year == yearDD.value + 2020).ToList<Card>();
         int cardsCount = cards.Count;
-        Debug.LogError(cardsCount);
         if (cardsCount > 0)
         {
             foreach (var item in HitListMain.Instance.panelCards.cards)
@@ -108,6 +108,7 @@ public class Panel_MetricsRisk : MonoBehaviour
                 List<Card> monthCards = yearCards.Where(c => c.creationDate.Month == i + 1).ToList<Card>();
                 monthLabels[i].text = monthLabels[i].text = ((float)monthCards.Count / 4f).ToString("0.0");
             }
+            yearLabel.text = ((float)cardsCount / 52f).ToString("0.000");
         }
     }
 }
