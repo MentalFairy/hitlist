@@ -8,5 +8,6 @@ public class AddProject : SkrptrAction
     public override void Execute()
     {
         HitListMain.Instance.panelProjectSelection.AddProject();
+        HitListMain.Instance.panelProjectSelection.SaveProjects();
     }
 }
