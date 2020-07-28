@@ -10,21 +10,24 @@ public class AddCard : SkrptrAction
     public int[] targetHours = { 4, 8, 48, 144, 288, 336 };
     public override void Execute()
     {
-        bool milestone = false; ;
-        if (milestoneYes.isChecked)
-            milestone = true;
-
-
-        int cardTargetHours = 0;
-        for (int i = 0; i < options.Length; i++)
+        if (HitListMain.Instance.currentProject != "")
         {
-            if (options[i].isChecked)
+            bool milestone = false; ;
+            if (milestoneYes.isChecked)
+                milestone = true;
+
+
+            int cardTargetHours = 0;
+            for (int i = 0; i < options.Length; i++)
             {
-                cardTargetHours = targetHours[i];
-                break;
+                if (options[i].isChecked)
+                {
+                    cardTargetHours = targetHours[i];
+                    break;
+                }
             }
+            Debug.Log("Adding card: " + milestone + " | " + cardTargetHours);
+            HitListMain.Instance.panelCards.AddCard(cardTargetHours, milestone);
         }
-        Debug.Log("Adding card: " + milestone + " | " + cardTargetHours);
-        HitListMain.Instance.panelCards.AddCard(cardTargetHours, milestone);
     }
 }

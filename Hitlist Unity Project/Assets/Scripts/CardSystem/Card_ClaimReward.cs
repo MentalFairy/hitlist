@@ -12,10 +12,14 @@ public class Card_ClaimReward : SkrptrAction
 
         if(card.milestone)
         {
-            HitListMain.Instance.panelManageSoldier.balance += 150;
+           
             for (int i = 0; i < 3; i++)
             {
-                HitListMain.Instance.panelManageSoldier.BuyChicken();
+                if (HitListMain.Instance.panelManageSoldier.chickenCount <= HitListMain.Instance.panelManageSoldier.maxChicken)
+                {
+                    HitListMain.Instance.panelManageSoldier.balance += 50;
+                    HitListMain.Instance.panelManageSoldier.BuyChicken();
+                }
             }
         }
         else

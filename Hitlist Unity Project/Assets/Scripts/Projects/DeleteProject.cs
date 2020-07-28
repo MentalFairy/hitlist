@@ -8,5 +8,6 @@ public class DeleteProject : SkrptrAction
     public override void Execute()
     {
         HitListMain.Instance.panelProjectSelection.DeleteProject(GetComponentInParent<Project>());
+        HitListMain.Instance.currentProject = "";
     }
 }

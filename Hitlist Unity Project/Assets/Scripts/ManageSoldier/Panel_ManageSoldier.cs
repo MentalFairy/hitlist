@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skrptr;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class Panel_ManageSoldier : MonoBehaviour
 
     public int customerTarget = 0;
     public int currentCustomers = 0;
+    public SkrptrCheckbox holiday;
 
     public Image[] fillHpBars;
     public Text[] balanceTexts;
@@ -50,6 +52,10 @@ public class Panel_ManageSoldier : MonoBehaviour
 
             customerTarget = int.Parse(soldierData[6]);
             currentCustomers = int.Parse(soldierData[7]);
+            bool holidayBool = bool.Parse(soldierData[8]);
+            if (holidayBool)
+                holiday.Check();
+
             InitCustomerData();
             for (int i = 0; i < chickenCount; i++)
             {
@@ -81,7 +87,7 @@ public class Panel_ManageSoldier : MonoBehaviour
     }
     public void BuyChicken()
     {
-        if (chickenCount < maxChicken && balance > chickenPrice)
+        if (chickenCount < maxChicken && balance >= chickenPrice)
         {
             chickenCount++;
             chickens.Add(Instantiate(chickenIcon, chickenSlotsTransform));
@@ -113,26 +119,30 @@ public class Panel_ManageSoldier : MonoBehaviour
     }
     public void Drain()
     {
-        if (HP > 0)
+        if (holiday.isChecked == false)
         {
-            double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute / 60f;
-            HP -= drain;
-            //Debug.Log("Drained: " + drain);
-            lastDrain = DateTime.Now;
-            SaveSoldier();
-            UpdateHPBars();
-        }
-        else
-        {
-            HP = 0;
-            //die
+            if (HP > 0)
+            {
+                double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute / 60f;
+                HP -= drain;
+                //Debug.Log("Drained: " + drain);
+                lastDrain = DateTime.Now;
+                SaveSoldier();
+                UpdateHPBars();
+            }
+            else
+            {
+                HP = 0;
+                //die
+            }
         }
     }
     public void SaveSoldier()
     {
         string dataToSave = "";
         dataToSave += HP + "|" + lastDrain.ToString() + "|" + balance.ToString() + "|" + chickenCount.ToString()
-        + "|" + chickenRegen.ToString() + "|" + characterLevel + "|" + customerTarget.ToString() + "|" + currentCustomers.ToString();
+        + "|" + chickenRegen.ToString() + "|" + characterLevel + "|" + customerTarget.ToString() + "|" + currentCustomers.ToString()
+        +"|" + holiday.isChecked.ToString();
         SaveLoad.Save(dataToSave, SaveLoad.SoldierFileName);
     }
     public void UpdateHPBars()

@@ -25,7 +25,7 @@ namespace Skrptr
     [System.Serializable]
     public class AnimDataGO : AnimData
     {
-        public GameObject targetGameObject;
+        public GameObject toGO;
     }
     [System.Serializable]
     public class AnimDataRotate : AnimDataVector3

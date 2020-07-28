@@ -15,7 +15,7 @@ namespace Skrptr
                 if(animDataGO[i].target.GetComponent<RectTransform>() !=null)
                 {
                     RectTransform rectTf = animDataGO[i].target.GetComponent<RectTransform>();
-                    rectTf.DOMove(animDataGO[i].targetGameObject.transform.position, animDataGO[i].duration).SetDelay(animDataGO[i].delay);
+                    rectTf.DOMove(animDataGO[i].toGO.transform.position, animDataGO[i].duration).SetDelay(animDataGO[i].delay);
                 }
             }
         }

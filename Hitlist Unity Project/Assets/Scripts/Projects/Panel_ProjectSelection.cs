@@ -52,6 +52,7 @@ public class Panel_ProjectSelection : MonoBehaviour
     public void AddProject()
     {
         projects.Add(Instantiate(projectListingPrefab, contentTransform).GetComponent<Project>());
+        projects[projects.Count - 1].inputField.text = "Project " + projects.Count;
         projects[projects.Count - 1].GetComponent<SkrptrTrigger>().triggerTargets[0].targetGO = this.gameObject;
         SaveProjects();
         StartCoroutine(nameof(ForceUpdateUI));

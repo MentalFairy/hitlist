@@ -4,7 +4,7 @@ using UnityEngine;
 using Skrptr;
 public class SkrptrAction_EnableDisableGO : SkrptrAction
 {
-    List<GameObject> enableGOs, disableGOs;
+    public List<GameObject> enableGOs, disableGOs;
 
     public override void Execute()
     {

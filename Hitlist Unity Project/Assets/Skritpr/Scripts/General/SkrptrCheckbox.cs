@@ -5,7 +5,6 @@ namespace Skrptr
 {
     public class SkrptrCheckbox : SkrptrElement
     {
-        [HideInInspector]
         public bool isChecked = false;
         public override void Click()
         {
