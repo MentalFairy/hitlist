@@ -14,7 +14,7 @@ namespace Skrptr
                 if (animDataVector3[i].target.GetComponent<RectTransform>() != null)
                 {
                     RectTransform rectTf = animDataVector3[i].target.GetComponent<RectTransform>();
-                    rectTf.DOLocalMove(animDataVector3[i].targetV3, animDataVector3[i].duration).SetDelay(animDataVector3[i].delay);
+                    rectTf.DOAnchorPos(animDataVector3[i].targetV3, animDataVector3[i].duration).SetDelay(animDataVector3[i].delay);
                 }
             }
         }

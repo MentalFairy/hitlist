@@ -29,7 +29,7 @@ public class Panel_ManageSoldier : MonoBehaviour
     public InputField targetCustomersInputField;
 
     public int characterLevel = 1;
-
+    bool holidayBool;
     public DateTime lastDrain;
     private void Awake()
     {
@@ -52,10 +52,8 @@ public class Panel_ManageSoldier : MonoBehaviour
 
             customerTarget = int.Parse(soldierData[6]);
             currentCustomers = int.Parse(soldierData[7]);
-            bool holidayBool = bool.Parse(soldierData[8]);
-            if (holidayBool)
-                holiday.Check();
-
+            holidayBool = bool.Parse(soldierData[8]);
+            StartCoroutine(nameof(InitHoliday));
             InitCustomerData();
             for (int i = 0; i < chickenCount; i++)
             {
@@ -69,6 +67,12 @@ public class Panel_ManageSoldier : MonoBehaviour
         }
         UpdateBalances();
         InvokeRepeating(nameof(Drain), 0, 1);
+    }
+    public IEnumerator InitHoliday()
+    {
+        yield return new WaitForSeconds(.6f);
+        if (holidayBool)
+            holiday.Check();
     }
     public void InitCustomerData()
     {
@@ -125,8 +129,7 @@ public class Panel_ManageSoldier : MonoBehaviour
             {
                 double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute / 60f;
                 HP -= drain;
-                //Debug.Log("Drained: " + drain);
-                lastDrain = DateTime.Now;
+                //Debug.Log("Drained: " + drain);                
                 SaveSoldier();
                 UpdateHPBars();
             }
@@ -136,6 +139,8 @@ public class Panel_ManageSoldier : MonoBehaviour
                 //die
             }
         }
+        lastDrain = DateTime.Now;
+        SaveSoldier();
     }
     public void SaveSoldier()
     {

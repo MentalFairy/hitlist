@@ -49,7 +49,7 @@ public class Panel_MetricsRisk : MonoBehaviour
         graphDD.value = 0;
     }
 
-    private void CountCards()
+    public void CountCards()
     {
         storiesCategorizedCounter = new int[targetHours.Length];
         List<Card> cards = HitListMain.Instance.panelCards.cards.Where(c => c.creationDate.Year == yearDD.value + 2020).ToList<Card>();
