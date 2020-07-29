@@ -155,6 +155,7 @@ public class Card : MonoBehaviour
             }
         }
         transform.SetSiblingIndex(nextActiveKidIndex);
+        HitListMain.Instance.hierarchyChanged = true;
     }
     public void DownPress()
     {
@@ -173,5 +174,6 @@ public class Card : MonoBehaviour
             }
         }
         transform.SetSiblingIndex(nextActiveKidIndex);
+        HitListMain.Instance.hierarchyChanged = true;
     }
 }

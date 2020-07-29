@@ -85,10 +85,14 @@ public class Panel_Cards : MonoBehaviour
             Destroy(card.gameObject);
         }
     }
-    public void DeleteCard(Card card)
+    public void DeleteCard()
     {
-        cards.Remove(card);
-        Destroy(card.gameObject);
+        if (HitListMain.Instance.cardToBeDeleted != null)
+        {
+            Card card = HitListMain.Instance.cardToBeDeleted;
+            cards.Remove(card);
+            Destroy(card.gameObject);
+        }
         
         SaveCards();
     }
@@ -131,6 +135,16 @@ public class Panel_Cards : MonoBehaviour
     public void SaveCards()
     {
         string dataToSave = "";
+        if (HitListMain.Instance.hierarchyChanged)
+        {
+            cards.Clear();
+            for (int i = 0; i < contentTransform.childCount; i++)
+            {
+                if (contentTransform.GetChild(i).GetComponent<Card>() != null)
+                    cards.Add(contentTransform.GetChild(i).GetComponent<Card>());
+            }
+            HitListMain.Instance.hierarchyChanged = false;
+        }
         for (int i = 0; i < cards.Count; i++)
         {
             dataToSave += cards[i].ToString();

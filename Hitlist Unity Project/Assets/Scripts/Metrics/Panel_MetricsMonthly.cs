@@ -29,7 +29,6 @@ public class Panel_MetricsMonthly : MonoBehaviour
         {
             dayBars[i].day.text = (i + 1).ToString();
         }
-
         yearDD.onValueChanged.AddListener(delegate { YearDDValueChanged(); });
         monthDD.onValueChanged.AddListener(delegate { MonthDDValueChanged(); });
         graphDD.onValueChanged.AddListener(delegate { GraphDDValueChanged(); });
@@ -69,14 +68,18 @@ public class Panel_MetricsMonthly : MonoBehaviour
             dayBars[i].activeState.gameObject.SetActive(false);
         }       
         dayBars[(int)slider.value].activeState.gameObject.SetActive(true);
+        UpdateWonLostLabels();
+    }
+    private void UpdateWonLostLabels()
+    {
         lostLabel.text = losses[(int)slider.value].ToString();
         wonLabel.text = gains[(int)slider.value].ToString();
     }
-
     private void MonthDDValueChanged()
     {     
         Debug.Log("Month changed");
         InitGraph();
+        UpdateWonLostLabels();
         totalLostLabel.text = totalWonLabel.text = monthDD.options[monthDD.value].text;
         int totalGains = 0;
         int totalLosses = 0;
@@ -92,6 +95,7 @@ public class Panel_MetricsMonthly : MonoBehaviour
     private void YearDDValueChanged()
     {
         InitGraph();
+        UpdateWonLostLabels();
     }
     private void InitGraph()
     {

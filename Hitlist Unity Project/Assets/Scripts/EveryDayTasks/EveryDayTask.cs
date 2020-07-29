@@ -14,6 +14,7 @@ public class EveryDayTask : MonoBehaviour
     private void Start()
     {
         inputField.onEndEdit.AddListener(delegate { OnEndEdit(); }) ;
+        redCheckMark.GetComponent<SkrptrAnimPlaySound>().animDataAudio[0].target = GameObject.FindGameObjectWithTag("EveryDayGreen");
     }
 
     private void OnEndEdit()

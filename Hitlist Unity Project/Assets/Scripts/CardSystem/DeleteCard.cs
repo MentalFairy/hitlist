@@ -7,6 +7,6 @@ public class DeleteCard : SkrptrAction
 {
     public override void Execute()
     {
-        HitListMain.Instance.panelCards.DeleteCard(GetComponentInParent<Card>());
+        HitListMain.Instance.panelCards.DeleteCard();
     }
 }

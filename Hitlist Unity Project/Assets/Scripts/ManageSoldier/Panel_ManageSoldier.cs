@@ -71,20 +71,16 @@ public class Panel_ManageSoldier : MonoBehaviour
     }
     public void InitLevelText()
     {
-        Debug.LogError(characterLevel);
         if (characterLevel >= 1 && characterLevel < 4)
         {
             characterVoiceLabel.text = "I AM DYING! can’t hold on much longer.. chicken..";
-            Debug.LogError("WTF1");
         }
         else if (characterLevel >= 4 && characterLevel < 7)
         {
-            Debug.LogError("WTF2");
             characterVoiceLabel.text = "HELP ME i feel hungry, i have been walking for hours..";
         }
         else if (characterLevel >= 7 && characterLevel < 11)
         {
-            Debug.LogError("WTF3");
             characterVoiceLabel.text = "I FEEL AMAZING! WHAT’S IN THIS CHICKEN?";
         }
     }

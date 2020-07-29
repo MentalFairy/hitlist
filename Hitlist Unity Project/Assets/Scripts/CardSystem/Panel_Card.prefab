@@ -1521,11 +1521,11 @@ MonoBehaviour:
   - duration: 1.5
     delay: 0
     target: {fileID: 1181751725}
-    targetColor: {r: 1, g: 1, b: 1, a: 1}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
   - duration: 1.5
     delay: 1.5
     target: {fileID: 1181751725}
-    targetColor: {r: 1, g: 1, b: 1, a: 0}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &1246794469
 GameObject:
   m_ObjectHideFlags: 0
@@ -5075,7 +5075,7 @@ GameObject:
   - component: {fileID: 7410623021474915974}
   - component: {fileID: 7410623021474915969}
   - component: {fileID: 909660168789454714}
-  - component: {fileID: 5619610313969185264}
+  - component: {fileID: 2912814409523718147}
   m_Layer: 5
   m_Name: Button_Delete
   m_TagString: Untagged
@@ -5152,7 +5152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 0
   runInitEvents: 0
---- !u!114 &5619610313969185264
+--- !u!114 &2912814409523718147
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5161,7 +5161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7410623021474915971}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da0364ad6210a24aaad0a6536003581, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f88a649bc39d9746b94911c7edb810b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skrptrEvent: 1
