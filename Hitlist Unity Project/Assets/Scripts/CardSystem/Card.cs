@@ -139,4 +139,39 @@ public class Card : MonoBehaviour
                 "|" + cardTargetHours + "|" + milestone + "|"+ cardStatus.ToString() +
                 "|" + leadTime.ToString() + "|" + lastLeadCounter.ToString() + "\n" ;
     }
+    public void UpPress()
+    {
+        Invoke(nameof(UpPressedDelayed), 0.2f);
+    }
+    public void UpPressedDelayed()
+    {
+        int nextActiveKidIndex = 0;
+        for (int i = transform.GetSiblingIndex() - 1; i > 0; i--)
+        {
+            if (transform.parent.GetChild(i).gameObject.activeSelf)
+            {
+                nextActiveKidIndex = i;
+                break;
+            }
+        }
+        transform.SetSiblingIndex(nextActiveKidIndex);
+    }
+    public void DownPress()
+    {
+        Invoke(nameof(DownPressDelayed), 0.2f);
+    }
+    public void DownPressDelayed()
+    {
+        int nextActiveKidIndex = -1;
+        for (int i = transform.GetSiblingIndex() + 1; i < transform.parent.childCount; i++)
+        {
+            if (transform.parent.GetChild(i).gameObject.activeSelf)
+            {
+                nextActiveKidIndex = i;
+                Debug.Log("Found: " + i);
+                break;
+            }
+        }
+        transform.SetSiblingIndex(nextActiveKidIndex);
+    }
 }
