@@ -42,12 +42,18 @@ public class Panel_ProjectSelection : MonoBehaviour
             }
         }
     }
-    public void DeleteProject(Project project)
+    public void DeleteProject()
     {
-        projects.Remove(project);
-        Destroy(project.gameObject);
-        StartCoroutine(nameof(ForceUpdateUI));
-        SaveProjects();
+        if (HitListMain.Instance.projectToBeRemoved != null)
+        {
+            Project project = HitListMain.Instance.projectToBeRemoved;
+            HitListMain.Instance.panelCards.DeleteCards(project.projectName);
+            projects.Remove(project);
+            Destroy(project.gameObject);
+            StartCoroutine(nameof(ForceUpdateUI));
+            SaveProjects();
+            HitListMain.Instance.projectToBeRemoved = null;
+        }
     }
     public void AddProject()
     {

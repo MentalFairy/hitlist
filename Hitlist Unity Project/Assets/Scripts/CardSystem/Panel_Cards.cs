@@ -69,6 +69,22 @@ public class Panel_Cards : MonoBehaviour
         }
         InvokeRepeating(nameof(SaveCards),0, 1f);
     }
+    public void DeleteCards(string projectName)
+    {
+        List<Card> cardsToBeRemoved = new List<Card>();
+        foreach (var card in cards)
+        {
+            if(card.projectName == projectName)
+            {
+                cardsToBeRemoved.Add(card);
+            }
+        }
+        foreach (var card in cardsToBeRemoved)
+        {
+            cards.Remove(card);
+            Destroy(card.gameObject);
+        }
+    }
     public void DeleteCard(Card card)
     {
         cards.Remove(card);
