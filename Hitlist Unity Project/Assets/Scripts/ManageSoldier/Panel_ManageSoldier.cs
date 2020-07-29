@@ -25,7 +25,7 @@ public class Panel_ManageSoldier : MonoBehaviour
     public Transform chickenSlotsTransform;
     public List<GameObject> chickens;
     public GameObject[] levels;
-    public Text levelLabel, currentCustomersLabel,customerCurrentAndTarget;
+    public Text levelLabel, currentCustomersLabel,customerCurrentAndTarget,characterVoiceLabel;
     public InputField targetCustomersInputField;
 
     public int characterLevel = 1;
@@ -49,6 +49,7 @@ public class Panel_ManageSoldier : MonoBehaviour
             chickenCount = int.Parse(soldierData[3]);
             chickenRegen = double.Parse(soldierData[4]);
             characterLevel = int.Parse(soldierData[5]);
+            InitLevelText();
 
             customerTarget = int.Parse(soldierData[6]);
             currentCustomers = int.Parse(soldierData[7]);
@@ -67,6 +68,25 @@ public class Panel_ManageSoldier : MonoBehaviour
         }
         UpdateBalances();
         InvokeRepeating(nameof(Drain), 0, 1);
+    }
+    public void InitLevelText()
+    {
+        Debug.LogError(characterLevel);
+        if (characterLevel >= 1 && characterLevel < 4)
+        {
+            characterVoiceLabel.text = "I AM DYING! can’t hold on much longer.. chicken..";
+            Debug.LogError("WTF1");
+        }
+        else if (characterLevel >= 4 && characterLevel < 7)
+        {
+            Debug.LogError("WTF2");
+            characterVoiceLabel.text = "HELP ME i feel hungry, i have been walking for hours..";
+        }
+        else if (characterLevel >= 7 && characterLevel < 11)
+        {
+            Debug.LogError("WTF3");
+            characterVoiceLabel.text = "I FEEL AMAZING! WHAT’S IN THIS CHICKEN?";
+        }
     }
     public IEnumerator InitHoliday()
     {
@@ -112,7 +132,7 @@ public class Panel_ManageSoldier : MonoBehaviour
         if (chickenCount > 0)
         {
             HP += chickenRegen;
-            if (HP > 50 * characterLevel)
+            if (HP > 50 * characterLevel && characterLevel < 10)
                 LevelUp();
             chickenCount--;
             GameObject chicken = chickens[0];
@@ -130,6 +150,7 @@ public class Panel_ManageSoldier : MonoBehaviour
             InitLevels();
             SaveSoldier();
         }
+        InitLevelText();
     }
     public void Die()
     {
