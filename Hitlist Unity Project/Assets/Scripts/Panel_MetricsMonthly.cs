@@ -9,6 +9,7 @@ using Skrptr;
 
 public class Panel_MetricsMonthly : MonoBehaviour
 {
+    public AudioSource sliderAS;
     public SkrptrElement dayMetrics, yearMetrics;
     public Dropdown yearDD, monthDD, graphDD;
     public Slider slider;
@@ -62,6 +63,7 @@ public class Panel_MetricsMonthly : MonoBehaviour
 
     private void SliderValueChanged()
     {
+        sliderAS.Play();
         for (int i = 0; i < dayBars.Length; i++)
         {
             dayBars[i].activeState.gameObject.SetActive(false);

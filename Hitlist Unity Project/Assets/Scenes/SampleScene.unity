@@ -27298,6 +27298,8 @@ GameObject:
   - component: {fileID: 969024662}
   - component: {fileID: 969024661}
   - component: {fileID: 969024660}
+  - component: {fileID: 969024664}
+  - component: {fileID: 969024663}
   m_Layer: 5
   m_Name: Panel_ManageSoldier
   m_TagString: Untagged
@@ -27440,6 +27442,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 0
   runInitEvents: 128
+--- !u!114 &969024663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969024656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125c3900329020c4b84d2e771d398898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 128
+  enableGOs: []
+  disableGOs:
+  - {fileID: 1778074195}
+--- !u!114 &969024664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969024656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125c3900329020c4b84d2e771d398898, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 256
+  enableGOs:
+  - {fileID: 1778074195}
+  disableGOs: []
 --- !u!1 &969947611
 GameObject:
   m_ObjectHideFlags: 0
@@ -35646,6 +35680,7 @@ GameObject:
   - component: {fileID: 1284926251}
   - component: {fileID: 1284926252}
   - component: {fileID: 1284926253}
+  - component: {fileID: 1284926254}
   m_Layer: 5
   m_Name: Panel_ChallengeCompleted
   m_TagString: Untagged
@@ -35822,6 +35857,24 @@ MonoBehaviour:
   - Hard earned cash! $$$
   - Keep going, you're doing great.
   - Success, one step at a time!
+--- !u!114 &1284926254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284926244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a46f7d9852241064696b009d945817d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 256
+  ease: 6
+  animDataAudio:
+  - duration: 0
+    delay: 0
+    target: {fileID: 1464951915}
 --- !u!1 &1285474017
 GameObject:
   m_ObjectHideFlags: 0
@@ -49160,7 +49213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1778074196
 Transform:
   m_ObjectHideFlags: 0
@@ -49186,10 +49239,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3c9f840917a414f4ebb210967f1df48d, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -50058,6 +50111,9 @@ MonoBehaviour:
   - duration: 0
     delay: 0
     target: {fileID: 857683537}
+  - duration: 0
+    delay: 0.25
+    target: {fileID: 1132321420}
 --- !u!1 &1844899409
 GameObject:
   m_ObjectHideFlags: 0
@@ -50292,6 +50348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6629563400865c48905c69a50af4d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderAS: {fileID: 1454728414}
   lineRenderer: {fileID: 1416201164}
   graphDD: {fileID: 1519539298}
   yearDD: {fileID: 972658893}
@@ -60430,6 +60487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c520d2fc5e3dd364aaad4ee6a28be97a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sliderAS: {fileID: 1454728414}
   dayMetrics: {fileID: 765294918}
   yearMetrics: {fileID: 1850181577}
   yearDD: {fileID: 1606036039}

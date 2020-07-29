@@ -10,6 +10,7 @@ using UnityEngine.UI;
 
 public class Panel_MetricsYear : MonoBehaviour
 {
+    public AudioSource sliderAS;
     public LineRenderer lineRenderer;
     public Dropdown graphDD, yearDD;
     public Slider slider;
@@ -59,6 +60,7 @@ public class Panel_MetricsYear : MonoBehaviour
 
     private void OnSliderValueChanged()
     {
+        sliderAS.Play();
         foreach (var go in activeStatuses)
         {
             go.SetActive(false);
