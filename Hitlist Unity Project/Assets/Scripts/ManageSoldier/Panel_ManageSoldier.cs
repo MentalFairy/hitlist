@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class Panel_ManageSoldier : MonoBehaviour
 {
-    public double HP = 100;
-    public double drainPerMinute = 0.002f;
+    public double HP = 50;
+    public double drainPerMinute = 0.005f;
     public int balance = 0;
     public int chickenCount =0;
     public double chickenRegen = 50;
@@ -20,7 +20,7 @@ public class Panel_ManageSoldier : MonoBehaviour
     public SkrptrCheckbox holiday;
 
     public Image[] fillHpBars;
-    public Text[] balanceTexts;
+    public Text[] balanceTexts,HPtexts;
     public GameObject chickenIcon;
     public Transform chickenSlotsTransform;
     public List<GameObject> chickens;
@@ -112,14 +112,28 @@ public class Panel_ManageSoldier : MonoBehaviour
         if (chickenCount > 0)
         {
             HP += chickenRegen;
-            if (HP > 100)
-                HP = 100;
+            if (HP > 50 * characterLevel)
+                LevelUp();
             chickenCount--;
             GameObject chicken = chickens[0];
             chickens.RemoveAt(0);
             GameObject.Destroy(chicken);
+            UpdateHPBars();
             SaveSoldier();
         }
+    }
+    public void LevelUp()
+    {
+        if (characterLevel < 10)
+        {
+            characterLevel++;
+            InitLevels();
+            SaveSoldier();
+        }
+    }
+    public void Die()
+    {
+
     }
     public void Drain()
     {
@@ -127,16 +141,16 @@ public class Panel_ManageSoldier : MonoBehaviour
         {
             if (HP > 0)
             {
-                double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute / 60f;
+                double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute / 60f * characterLevel;
                 HP -= drain;
                 //Debug.Log("Drained: " + drain);                
                 SaveSoldier();
                 UpdateHPBars();
             }
-            else
+            else if(HP < 0)
             {
                 HP = 0;
-                //die
+                Die();
             }
         }
         lastDrain = DateTime.Now;
@@ -154,7 +168,11 @@ public class Panel_ManageSoldier : MonoBehaviour
     {
         foreach (var item in fillHpBars)
         {
-            item.fillAmount = 1 - (float)(HP / 100f);
+            item.fillAmount = 1 - (float)(HP / (50f * characterLevel));
+        }
+        foreach (var item in HPtexts)
+        {
+            item.text = ((int)HP).ToString();
         }
     }
 }
