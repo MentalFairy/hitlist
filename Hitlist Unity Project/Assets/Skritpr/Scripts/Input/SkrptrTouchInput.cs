@@ -17,8 +17,8 @@ namespace Skrptr
         public float longPressDelay = .5f;
         public void LongPress()
         {
-            SkrptrMain.hoveredElem.LongPress();
-            SkrptrMain.hoveredElem = null;
+            SkrptrMain.selectedElem.LongPress();
+            SkrptrMain.selectedElem = null;
         }
         protected  void Start()
         {            
@@ -79,13 +79,13 @@ namespace Skrptr
                             if (hitSkrptrElements[0].GetComponent<SkrptrElement>() != null)
                             {
                                 Debug.Log("Touch Began / hover enter on: " + hitSkrptrElements[0].gameObject.name);
-                                if (SkrptrMain.hoveredElem != null)
-                                    SkrptrMain.hoveredElem.HoverExit();
+                                if (SkrptrMain.selectedElem != null)
+                                    SkrptrMain.selectedElem.Deselect();
 
-                                if (SkrptrMain.hoveredElem != hitSkrptrElements[0].GetComponent<SkrptrElement>())
+                                if (SkrptrMain.selectedElem != hitSkrptrElements[0].GetComponent<SkrptrElement>())
                                 {
-                                    SkrptrMain.hoveredElem = hitSkrptrElements[0].GetComponent<SkrptrElement>();
-                                    SkrptrMain.hoveredElem.HoverEnter();
+                                    SkrptrMain.selectedElem = hitSkrptrElements[0].GetComponent<SkrptrElement>();
+                                    SkrptrMain.selectedElem.Select();
                                     Invoke(nameof(LongPress), longPressDelay);
                                 }
                             }
@@ -98,27 +98,27 @@ namespace Skrptr
                             phase = TouchPhase.Moved;
                         else if (touch.phase == TouchPhase.Stationary)
                             phase = TouchPhase.Stationary;
-                        if (SkrptrMain.hoveredElem != null)
+                        if (SkrptrMain.selectedElem != null)
                         {
                             if (hitSkrptrElements.Count > 0)
                             {
                                 if (hitSkrptrElements[0].GetComponent<SkrptrElement>() == null ||
-                                    hitSkrptrElements[0].GetComponent<SkrptrElement>() != SkrptrMain.hoveredElem)
+                                    hitSkrptrElements[0].GetComponent<SkrptrElement>() != SkrptrMain.selectedElem)
                                 {
                                     Debug.LogError(" Touch Outside of selection");
-                                    if (SkrptrMain.lastHoveredElem != null)
-                                        SkrptrMain.lastHoveredElem.HoverExit();
-                                    SkrptrMain.hoveredElem.HoverExit();
-                                    SkrptrMain.hoveredElem = null;
+                                    if (SkrptrMain.lastSelectedElem != null)
+                                        SkrptrMain.lastSelectedElem.Deselect();
+                                    SkrptrMain.selectedElem.Deselect();
+                                    SkrptrMain.selectedElem = null;
                                     CancelInvoke(nameof(LongPress));
                                 }
                             }
                             else
                             {
-                                if (SkrptrMain.lastHoveredElem != null)
-                                    SkrptrMain.lastHoveredElem.HoverExit();
-                                SkrptrMain.hoveredElem.HoverExit();
-                                SkrptrMain.hoveredElem = null;
+                                if (SkrptrMain.lastSelectedElem != null)
+                                    SkrptrMain.lastSelectedElem.Deselect();
+                                SkrptrMain.selectedElem.Deselect();
+                                SkrptrMain.selectedElem = null;
                                 CancelInvoke(nameof(LongPress));
                             }
                         }
@@ -126,17 +126,17 @@ namespace Skrptr
                     // End the touch phase, click it.
                     if (touch.phase == TouchPhase.Ended)
                     {
-                        if (SkrptrMain.hoveredElem != null)
+                        if (SkrptrMain.selectedElem != null)
                         {
                             // Debug.Log("Touch Ended");
-                            if (SkrptrMain.lastHoveredElem != null)
+                            if (SkrptrMain.lastSelectedElem != null)
                             {
-                                SkrptrMain.lastHoveredElem.HoverExit();
+                                SkrptrMain.lastSelectedElem.Deselect();
                             }
-                            SkrptrMain.hoveredElem.HoverExit();
-                            SkrptrMain.hoveredElem.Click();
-                            SkrptrMain.lastHoveredElem = SkrptrMain.hoveredElem;
-                            SkrptrMain.hoveredElem = null;
+                            SkrptrMain.selectedElem.Deselect();
+                            SkrptrMain.selectedElem.Click();
+                            SkrptrMain.lastSelectedElem = SkrptrMain.selectedElem;
+                            SkrptrMain.selectedElem = null;
                             CancelInvoke(nameof(LongPress));
                         }
                     }

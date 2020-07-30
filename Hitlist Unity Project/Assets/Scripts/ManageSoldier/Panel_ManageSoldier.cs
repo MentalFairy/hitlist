@@ -128,8 +128,13 @@ public class Panel_ManageSoldier : MonoBehaviour
         if (chickenCount > 0)
         {
             HP += chickenRegen;
+            HP += chickenRegen;
             if (HP > 50 * characterLevel && characterLevel < 10)
                 LevelUp();
+
+            if (HP > 50 * characterLevel)
+                HP = 50 * characterLevel;
+
             chickenCount--;
             GameObject chicken = chickens[0];
             chickens.RemoveAt(0);

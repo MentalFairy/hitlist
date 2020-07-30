@@ -65,8 +65,6 @@ namespace Skrptr
                             {
                                 if (SkrptrMain.hoveredElem != SkrptrMain.selectedElem)
                                 {
-                                    //if (mouseManager.lastSelectedElement != null)
-                                    //    mouseManager.lastSelectedElement.OnDeselect();
                                     SkrptrMain.selectedElem.Deselect();
                                     SkrptrMain.selectedElem = null;
                                     CancelInvoke(nameof(LongPress));
@@ -100,6 +98,8 @@ namespace Skrptr
                             SkrptrMain.hoveredElem = null;
                             CancelInvoke(nameof(LongPress));
                         }
+                        if (SkrptrMain.selectedElem != null)
+                            SkrptrMain.selectedElem.Deselect();
                     }
                 }
                 //Invalid Raycast
