@@ -25,6 +25,7 @@ public class Card : MonoBehaviour
     public Image glowFill;
     public GameObject cycleStatusItems, leadTimeItems;
     public GameObject greenRemove, redRemove;
+    public GameObject editIcon;
 
     public void Init()
     {
@@ -79,9 +80,16 @@ public class Card : MonoBehaviour
         inputField.onEndEdit.AddListener(delegate { OnInputFieldEndEdit(); });
         InvokeRepeating(nameof(CountLeadtime), 0, 1);
     }
+    private void Update()
+    {
+        if (inputField.text != "")
+            editIcon.SetActive(false);
+        else
+            editIcon.SetActive(true);
+    }
     public void CountLeadtime()
     {
-       if (stage == CardStage.ToDo || stage == CardStage.Testing)
+        if (stage == CardStage.ToDo)
         {
             leadTime += (DateTime.Now - lastLeadCounter).TotalSeconds;
         }
@@ -89,7 +97,6 @@ public class Card : MonoBehaviour
         if (gameObject.activeSelf)
         {
             int days = (int)(leadTime / 60f / 60f / 24f);
-            HitListMain.Instance.leadTimeDays.text = "DAYS: " + days.ToString();
             int hours = (int)leadTime / 60 / 60 % 24;
             int minutes = (int)leadTime / 60 % 60;
             int seconds = (int)leadTime % 60;
@@ -107,7 +114,7 @@ public class Card : MonoBehaviour
                 hoursString = "0" + hours.ToString();
             else
                 hoursString = hours.ToString();
-            leadLabel.text = "HOURS: " + hoursString + ":" + minutesString + ":" + secondsString;
+            leadLabel.text = "DAYS: " + days.ToString() + " HOURS: " + hoursString + ":" + minutesString + ":" + secondsString;
 
             TimeSpan currentTimeSpan = startDate.AddSeconds(leadTime) - startDate;
             TimeSpan totalTimeSpan = startDate.AddHours(cardTargetHours) - startDate;

@@ -15,6 +15,7 @@ public class Panel_MetricsMonthly : MonoBehaviour
     public Slider slider;
     public Text wonLabel, lostLabel,totalWonLabel,totalLostLabel,totalWonLabelValue,totalLostLabelValue;
     public DayBar[] dayBars;
+    public GameObject[] positiveDots, negativeDots;
     public Text[] yValueTexts;
     public int maxValueGains, maxValueLosses, daysInMonth;
     public int[] gains, losses;
@@ -66,8 +67,12 @@ public class Panel_MetricsMonthly : MonoBehaviour
         for (int i = 0; i < dayBars.Length; i++)
         {
             dayBars[i].activeState.gameObject.SetActive(false);
+            positiveDots[i].gameObject.SetActive(false);
+            negativeDots[i].gameObject.SetActive(false);
         }       
         dayBars[(int)slider.value].activeState.gameObject.SetActive(true);
+        positiveDots[(int)slider.value].gameObject.SetActive(true);
+        negativeDots[(int)slider.value].gameObject.SetActive(true);
         UpdateWonLostLabels();
     }
     private void UpdateWonLostLabels()

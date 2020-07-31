@@ -38,6 +38,7 @@ public class Project : MonoBehaviour
         {
             int days = (int)(leadTime / 60f / 60f / 24f);
             HitListMain.Instance.leadTimeDays.text = "DAYS: " + days.ToString();
+            Debug.LogError(days.ToString());
             int hours = (int)leadTime / 60 / 60 % 24;
             int minutes = (int)leadTime / 60 % 60;
             int seconds = (int)leadTime % 60;
