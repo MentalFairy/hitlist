@@ -67,7 +67,6 @@ public class Panel_Cards : MonoBehaviour
                 cards.Add(card);
             }
         }
-        InvokeRepeating(nameof(SaveCards),0, 1f);
     }
     public void DeleteCards(string projectName)
     {
@@ -149,7 +148,10 @@ public class Panel_Cards : MonoBehaviour
         {
             dataToSave += cards[i].ToString();
         }
-        SaveLoad.Save(dataToSave, SaveLoad.CardsFileName);
+        if (dataToSave != "")
+        {
+            SaveLoad.Save(dataToSave, SaveLoad.CardsFileName);
+        }
     }
 
     public void FilterCards()
@@ -194,5 +196,14 @@ public class Panel_Cards : MonoBehaviour
                 }
             }
         }
+    }
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+            SaveCards();
+    }
+    private void OnApplicationQuit()
+    {
+        SaveCards();
     }
 }

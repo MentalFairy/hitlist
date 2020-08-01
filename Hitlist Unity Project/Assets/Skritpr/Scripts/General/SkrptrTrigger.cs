@@ -14,12 +14,10 @@ namespace Skrptr
             {
                 foreach (SkrptrEvent item in Enum.GetValues(typeof(SkrptrEvent)))
                 {
-                    //Debug.Log(triggerTargets[i].targetGO + " " + triggerTargets[i].triggerEvent + " " + item.ToString());
                     if ((triggerTargets[i].triggerEvent & item) == item && item != SkrptrEvent.None)
                     {
                         if (triggerTargets[i].targetGO.GetComponent<SkrptrElement>() != null)
                         {
-                            //Debug.LogError("Invoking:" + item.ToString() + " on : " + triggerTargets[i].targetGO.gameObject.name);
                             triggerTargets[i].targetGO.GetComponent<SkrptrElement>().Invoke(item.ToString(), triggerTargets[i].delay);
                             break;
                         }                        

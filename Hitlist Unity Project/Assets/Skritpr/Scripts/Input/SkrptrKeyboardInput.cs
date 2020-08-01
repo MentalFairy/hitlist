@@ -65,12 +65,7 @@ namespace Skrptr
                         if ((mapper.neighbours[i].direction & direction) == direction)
                         {
                             targetNeighbour = mapper.neighbours[i].target.gameObject;
-                        }
-                        else
-                        {
-
-                        }
-                   
+                        }                   
                     }
                     SkrptrMain.hoveredElem.HoverExit();
                     SkrptrMain.lastHoveredElem = SkrptrMain.hoveredElem;

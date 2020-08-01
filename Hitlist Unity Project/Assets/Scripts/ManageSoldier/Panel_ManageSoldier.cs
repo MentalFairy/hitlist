@@ -113,7 +113,6 @@ public class Panel_ManageSoldier : MonoBehaviour
             chickens.Add(Instantiate(chickenIcon, chickenSlotsTransform));
             balance -= chickenPrice;
             UpdateBalances();
-            SaveSoldier();
         }
     }
     public void UpdateBalances()
@@ -140,7 +139,6 @@ public class Panel_ManageSoldier : MonoBehaviour
             chickens.RemoveAt(0);
             GameObject.Destroy(chicken);
             UpdateHPBars();
-            SaveSoldier();
         }
     }
     public void LevelUp()
@@ -149,7 +147,6 @@ public class Panel_ManageSoldier : MonoBehaviour
         {
             characterLevel++;
             InitLevels();
-            SaveSoldier();
         }
         InitLevelText();
     }
@@ -165,8 +162,7 @@ public class Panel_ManageSoldier : MonoBehaviour
             {
                 double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute / 60f * characterLevel;
                 HP -= drain;
-                //Debug.Log("Drained: " + drain);                
-                SaveSoldier();
+                //Debug.Log("Drained: " + drain);              
                 UpdateHPBars();
             }
             else if(HP < 0)
@@ -176,7 +172,6 @@ public class Panel_ManageSoldier : MonoBehaviour
             }
         }
         lastDrain = DateTime.Now;
-        SaveSoldier();
     }
     public void SaveSoldier()
     {
@@ -196,5 +191,14 @@ public class Panel_ManageSoldier : MonoBehaviour
         {
             item.text = ((int)HP).ToString();
         }
+    }
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+            SaveSoldier();
+    }
+    private void OnApplicationQuit()
+    {
+        SaveSoldier();
     }
 }

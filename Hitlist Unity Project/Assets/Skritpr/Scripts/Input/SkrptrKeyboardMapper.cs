@@ -28,7 +28,6 @@ namespace Skrptr
                             if (foundCount >= 2)
                             {
                                 neighbours[i].direction = neighbours[i].direction ^ direction;
-                                Debug.LogWarning("Element: " + gameObject.name + " has been found having two different targetting neighoburs for direction : " + direction.ToString() + " on index: " + i + ". Removing duplicate.");
                             }
                         }
                     }

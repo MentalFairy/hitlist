@@ -13,12 +13,12 @@ public class Panel_ProjectSelection : MonoBehaviour
     {
         projects = new List<Project>();
         HitListMain.Instance.panelProjectSelection = this;
-        InvokeRepeating(nameof(SaveProjects), 0f, 1f);
     }
     // Start is called before the first frame update
     void Start()
     {
         string savedData = SaveLoad.Load(SaveLoad.ProjectsListFileName);
+        Debug.LogError(savedData);
         if (savedData != null)
         {
             string[] projectsData = savedData.Split('\n');
@@ -34,6 +34,7 @@ public class Panel_ProjectSelection : MonoBehaviour
                 project.leadTime = double.Parse(projectData[2]);
                 project.lastLeadCounter = DateTime.Parse(projectData[3]);
                 projects.Add(project);
+                Debug.LogError("Project added: " + project.projectName);
             }
             if (projects.Count > 0)
             {
@@ -71,7 +72,10 @@ public class Panel_ProjectSelection : MonoBehaviour
         {
             datatToSave += project.ToString();
         }
-        SaveLoad.Save(datatToSave, SaveLoad.ProjectsListFileName);
+        if (datatToSave != "")
+        {
+            SaveLoad.Save(datatToSave, SaveLoad.ProjectsListFileName);
+        }
     }
     private IEnumerator ForceUpdateUI()
     {
@@ -80,6 +84,17 @@ public class Panel_ProjectSelection : MonoBehaviour
         go.transform.parent = contentTransform;
         yield return null;
         GameObject.Destroy(go);
+    }
+    private void OnApplicationQuit()
+    {
+        SaveProjects();
+    }
+    private void OnApplicationPause(bool pause)
+    {
+        if (pause)
+        {
+            SaveProjects();
+        }
     }
 }
 
