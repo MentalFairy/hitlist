@@ -2311,7 +2311,7 @@ GameObject:
   - component: {fileID: 1713451229}
   - component: {fileID: 1713451228}
   - component: {fileID: 1713451227}
-  - component: {fileID: 1713451226}
+  - component: {fileID: 8278874276788033186}
   m_Layer: 5
   m_Name: Button_RemoveRed
   m_TagString: Untagged
@@ -2388,7 +2388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 0
   runInitEvents: 0
---- !u!114 &1713451226
+--- !u!114 &8278874276788033186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2397,7 +2397,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1713451224}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da0364ad6210a24aaad0a6536003581, type: 3}
+  m_Script: {fileID: 11500000, guid: d348482c45b979c40805856aea9e89a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skrptrEvent: 1
@@ -3079,10 +3079,10 @@ RectTransform:
   m_Father: {fileID: 7410623020915716298}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.024814809, y: 0}
-  m_AnchorMax: {x: 0.08840758, y: 0.5}
-  m_AnchoredPosition: {x: 8.48, y: 32.161}
-  m_SizeDelta: {x: 0, y: -23.074}
+  m_AnchorMin: {x: 0.032223508, y: 0.19261135}
+  m_AnchorMax: {x: 0.095816284, y: 0.5895081}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3810175352119642023
 CanvasRenderer:
@@ -4471,7 +4471,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7410623020762013719
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4811,6 +4811,8 @@ MonoBehaviour:
   greenRemove: {fileID: 8478502172974195483}
   redRemove: {fileID: 1713451224}
   editIcon: {fileID: 286608421}
+  redGlow: {fileID: 21300000, guid: ebf818c8efe2bc741a1daf92446846a6, type: 3}
+  blueGlow: {fileID: 21300000, guid: d41273bb4d0cc904da774b0808781792, type: 3}
 --- !u!114 &539992676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5047,10 +5049,10 @@ RectTransform:
   m_Father: {fileID: 7410623020915716298}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.024814809, y: 0}
-  m_AnchorMax: {x: 0.08840758, y: 0.5}
-  m_AnchoredPosition: {x: -10.71, y: 127.512}
-  m_SizeDelta: {x: 0, y: -23.074}
+  m_AnchorMin: {x: 0.015401403, y: 0.5895166}
+  m_AnchorMax: {x: 0.07899418, y: 0.99209625}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7410623021120076237
 CanvasRenderer:
@@ -5565,7 +5567,7 @@ GameObject:
   - component: {fileID: 5884408248397653706}
   - component: {fileID: 6719379954578329765}
   - component: {fileID: 715176279}
-  - component: {fileID: 715176280}
+  - component: {fileID: 4982582407432855587}
   m_Layer: 5
   m_Name: Button_RemoveGreen
   m_TagString: Untagged
@@ -5642,7 +5644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 0
   runInitEvents: 0
---- !u!114 &715176280
+--- !u!114 &4982582407432855587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5651,7 +5653,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8478502172974195483}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5da0364ad6210a24aaad0a6536003581, type: 3}
+  m_Script: {fileID: 11500000, guid: d348482c45b979c40805856aea9e89a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   skrptrEvent: 1

@@ -26,6 +26,7 @@ public class Card : MonoBehaviour
     public GameObject cycleStatusItems, leadTimeItems;
     public GameObject greenRemove, redRemove;
     public GameObject editIcon;
+    public Sprite redGlow, blueGlow;
 
     public void Init()
     {
@@ -131,7 +132,14 @@ public class Card : MonoBehaviour
                     glowStatuses[i].GetComponent<Image>().enabled = false;
                 }
             }
-
+            if(glowFill.fillAmount>=1)
+            {
+                glowFill.sprite = redGlow;
+            }
+            else
+            {
+                glowFill.sprite = blueGlow;
+            }
         }
 
     }

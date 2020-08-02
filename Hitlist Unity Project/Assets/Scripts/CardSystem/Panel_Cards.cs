@@ -123,7 +123,6 @@ public class Panel_Cards : MonoBehaviour
         card.projectName = HitListMain.Instance.currentProject;
         card.milestone = milestone;
         card.stage = CardStage.Backlog;
-        card.inputField.text = "Edit me by longpress";
         card.creationDate = DateTime.Now;
         card.cardTargetHours = cardTargetHours;
         card.backlogItems.SetActive(true);

@@ -127,7 +127,6 @@ public class Panel_ManageSoldier : MonoBehaviour
         if (chickenCount > 0)
         {
             HP += chickenRegen;
-            HP += chickenRegen;
             if (HP > 50 * characterLevel && characterLevel < 10)
                 LevelUp();
 

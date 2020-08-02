@@ -18,7 +18,6 @@ public class Panel_ProjectSelection : MonoBehaviour
     void Start()
     {
         string savedData = SaveLoad.Load(SaveLoad.ProjectsListFileName);
-        Debug.LogError(savedData);
         if (savedData != null)
         {
             string[] projectsData = savedData.Split('\n');

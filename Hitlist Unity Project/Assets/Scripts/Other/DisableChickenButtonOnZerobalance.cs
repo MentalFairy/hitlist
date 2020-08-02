@@ -15,7 +15,7 @@ public class DisableChickenButtonOnZerobalance : MonoBehaviour
         if (HitListMain.Instance.panelManageSoldier.balance < HitListMain.Instance.panelManageSoldier.chickenPrice)
             img.raycastTarget = false;
         else
-            img.raycastTarget = false;       
+            img.raycastTarget = true;       
 
     }
 }
