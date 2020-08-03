@@ -357,7 +357,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7410623020915716298}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4956376, y: 0.40466517}
   m_AnchorMax: {x: 0.52182955, y: 0.545936}
@@ -2239,7 +2239,7 @@ GameObject:
   - component: {fileID: 1668777734}
   - component: {fileID: 1668777733}
   m_Layer: 5
-  m_Name: Img_Background
+  m_Name: Img_BackgroundLeadTime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3169,36 +3169,6 @@ MonoBehaviour:
     delay: 0.1
     target: {fileID: 990259028978352802}
     targetColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!1 &1953294724681887042
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8404500821253482418}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8404500821253482418
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1953294724681887042}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -668.3845, y: -256.08765, z: -21.861795}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7410623020915716298}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2030623097853184757
 GameObject:
   m_ObjectHideFlags: 0
@@ -4689,8 +4659,12 @@ GameObject:
   - component: {fileID: 7410623020915716299}
   - component: {fileID: 8063100477767005449}
   - component: {fileID: 539992676}
-  - component: {fileID: 539992677}
-  - component: {fileID: 539992678}
+  - component: {fileID: 6911648128071714595}
+  - component: {fileID: 5232013307356733479}
+  - component: {fileID: 2866643335629798018}
+  - component: {fileID: 8295407180649013123}
+  - component: {fileID: 7438828782459279487}
+  - component: {fileID: 8506093091568257470}
   m_Layer: 5
   m_Name: Panel_Card
   m_TagString: Untagged
@@ -4724,7 +4698,6 @@ RectTransform:
   - {fileID: 5952876850907293824}
   - {fileID: 657542117}
   - {fileID: 595535524}
-  - {fileID: 8404500821253482418}
   - {fileID: 286608422}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -4827,7 +4800,239 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isLocked: 0
   runInitEvents: 0
---- !u!114 &539992677
+--- !u!114 &6911648128071714595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410623020915716293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021cbe9f1e3a35e4aa245cbae4af577f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 128
+  ease: 6
+  animDataColor:
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 286608421}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 595535523}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 657542116}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 990259028978352802}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623021120076238}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623021079775058}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623021518708355}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623019748563815}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623019882961399}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 1668777731}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 147936277}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 989135989}
+    targetColor: {r: 0, g: 0, b: 0, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623020762013718}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623020626773006}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623019576904792}
+    targetColor: {r: 0, g: 0, b: 0, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623020825846559}
+    targetColor: {r: 0, g: 0, b: 0, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623020796979017}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623019483914005}
+    targetColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!114 &5232013307356733479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410623020915716293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021cbe9f1e3a35e4aa245cbae4af577f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 256
+  ease: 6
+  animDataColor:
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 286608421}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 595535523}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 657542116}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 990259028978352802}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623021120076238}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623021079775058}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623021518708355}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623019748563815}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623019882961399}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 1668777731}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 147936277}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 989135989}
+    targetColor: {r: 0, g: 0, b: 0, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623020762013718}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623020626773006}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623019576904792}
+    targetColor: {r: 0, g: 0, b: 0, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623020825846559}
+    targetColor: {r: 0, g: 0, b: 0, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623020796979017}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+  - duration: 0.25
+    delay: 0
+    target: {fileID: 7410623019483914005}
+    targetColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &2866643335629798018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410623020915716293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e4ea57282452d4891c34e54c381cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 128
+  triggerTargets:
+  - targetGO: {fileID: 649114702}
+    triggerEvent: 128
+    delay: 0
+  - targetGO: {fileID: 7410623020328788123}
+    triggerEvent: 128
+    delay: 0
+  - targetGO: {fileID: 1047037240}
+    triggerEvent: 128
+    delay: 0
+  - targetGO: {fileID: 7944290767085556848}
+    triggerEvent: 128
+    delay: 0
+  - targetGO: {fileID: 6624333000966856583}
+    triggerEvent: 128
+    delay: 0
+--- !u!114 &8295407180649013123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7410623020915716293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e4ea57282452d4891c34e54c381cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skrptrEvent: 256
+  triggerTargets:
+  - targetGO: {fileID: 649114702}
+    triggerEvent: 256
+    delay: 0
+  - targetGO: {fileID: 7410623020328788123}
+    triggerEvent: 256
+    delay: 0
+  - targetGO: {fileID: 1047037240}
+    triggerEvent: 256
+    delay: 0
+  - targetGO: {fileID: 7944290767085556848}
+    triggerEvent: 256
+    delay: 0
+  - targetGO: {fileID: 6624333000966856583}
+    triggerEvent: 256
+    delay: 0
+--- !u!114 &7438828782459279487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4842,11 +5047,27 @@ MonoBehaviour:
   skrptrEvent: 128
   ease: 6
   animDataV3:
-  - duration: 0.25
+  - duration: 0
     delay: 0
-    target: {fileID: 7410623020915716293}
-    targetV3: {x: 0, y: 0, z: 0}
---- !u!114 &539992678
+    target: {fileID: 649114702}
+    targetV3: {x: 0, y: 1, z: 1}
+  - duration: 0
+    delay: 0
+    target: {fileID: 7410623020328788123}
+    targetV3: {x: 0, y: 1, z: 1}
+  - duration: 0
+    delay: 0
+    target: {fileID: 1047037240}
+    targetV3: {x: 0, y: 1, z: 1}
+  - duration: 0
+    delay: 0
+    target: {fileID: 7944290767085556848}
+    targetV3: {x: 0, y: 1, z: 1}
+  - duration: 0
+    delay: 0
+    target: {fileID: 6624333000966856583}
+    targetV3: {x: 0, y: 1, z: 1}
+--- !u!114 &8506093091568257470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4861,9 +5082,25 @@ MonoBehaviour:
   skrptrEvent: 256
   ease: 6
   animDataV3:
-  - duration: 0.25
+  - duration: 0
     delay: 0
-    target: {fileID: 7410623020915716293}
+    target: {fileID: 649114702}
+    targetV3: {x: 1, y: 1, z: 1}
+  - duration: 0
+    delay: 0
+    target: {fileID: 7410623020328788123}
+    targetV3: {x: 1, y: 1, z: 1}
+  - duration: 0
+    delay: 0
+    target: {fileID: 1047037240}
+    targetV3: {x: 1, y: 1, z: 1}
+  - duration: 0
+    delay: 0
+    target: {fileID: 7944290767085556848}
+    targetV3: {x: 1, y: 1, z: 1}
+  - duration: 0
+    delay: 0
+    target: {fileID: 6624333000966856583}
     targetV3: {x: 1, y: 1, z: 1}
 --- !u!1 &7410623021005799997
 GameObject:
