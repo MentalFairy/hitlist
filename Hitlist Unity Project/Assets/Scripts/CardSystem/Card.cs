@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skrptr;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -156,9 +157,9 @@ public class Card : MonoBehaviour
     }
     public void UpPress()
     {
-        Invoke(nameof(UpPressedDelayed), 0.2f);
+        StartCoroutine(nameof(UpPressedDelayed));
     }
-    public void UpPressedDelayed()
+    public IEnumerator UpPressedDelayed()
     {
         int nextActiveKidIndex = 0;
         for (int i = transform.GetSiblingIndex() - 1; i > 0; i--)
@@ -169,14 +170,20 @@ public class Card : MonoBehaviour
                 break;
             }
         }
+        GetComponent<SkrptrElement>().Lock();
+        SkrptrElement nextActiveSkrptr = transform.parent.GetChild(nextActiveKidIndex).GetComponent<SkrptrElement>();
+        nextActiveSkrptr.Lock();
+        yield return new WaitForSecondsRealtime(0.25f);
         transform.SetSiblingIndex(nextActiveKidIndex);
+        nextActiveSkrptr.Unlock();
+        GetComponent<SkrptrElement>().Unlock();
         HitListMain.Instance.hierarchyChanged = true;
     }
     public void DownPress()
     {
-        Invoke(nameof(DownPressDelayed), 0.2f);
+        StartCoroutine(nameof(DownPressDelayed));
     }
-    public void DownPressDelayed()
+    public IEnumerator DownPressDelayed()
     {
         int nextActiveKidIndex = -1;
         for (int i = transform.GetSiblingIndex() + 1; i < transform.parent.childCount; i++)
@@ -188,6 +195,15 @@ public class Card : MonoBehaviour
                 break;
             }
         }
+
+        GetComponent<SkrptrElement>().Lock();
+        SkrptrElement nextActiveSkrptr = transform.parent.GetChild(nextActiveKidIndex).GetComponent<SkrptrElement>();
+        nextActiveSkrptr.Lock();
+        yield return new WaitForSecondsRealtime(0.25f);
+        transform.SetSiblingIndex(nextActiveKidIndex);
+        nextActiveSkrptr.Unlock();
+        GetComponent<SkrptrElement>().Unlock();
+
         transform.SetSiblingIndex(nextActiveKidIndex);
         HitListMain.Instance.hierarchyChanged = true;
     }
