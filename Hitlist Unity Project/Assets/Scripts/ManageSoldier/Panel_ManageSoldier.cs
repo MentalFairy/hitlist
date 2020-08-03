@@ -56,7 +56,7 @@ public class Panel_ManageSoldier : MonoBehaviour
             holidayBool = bool.Parse(soldierData[8]);
             StartCoroutine(nameof(InitHoliday));
             InitCustomerData();
-            for (int i = 0; i < chickenCount; i++)
+            for (int i = 0; i < chickenCount && i<maxChicken; i++)
             {
                 chickens.Add(Instantiate(chickenIcon, chickenSlotsTransform));
             }
@@ -107,11 +107,12 @@ public class Panel_ManageSoldier : MonoBehaviour
     }
     public void BuyChicken()
     {
-        if (chickenCount < maxChicken && balance >= chickenPrice)
+        if (balance >= chickenPrice)
         {
             chickenCount++;
-            chickens.Add(Instantiate(chickenIcon, chickenSlotsTransform));
             balance -= chickenPrice;
+            if(chickenCount <= maxChicken)
+                chickens.Add(Instantiate(chickenIcon, chickenSlotsTransform));
             UpdateBalances();
         }
     }
@@ -133,10 +134,13 @@ public class Panel_ManageSoldier : MonoBehaviour
             if (HP > 50 * characterLevel)
                 HP = 50 * characterLevel;
 
-            chickenCount--;
-            GameObject chicken = chickens[0];
-            chickens.RemoveAt(0);
-            GameObject.Destroy(chicken);
+            if (chickenCount <= maxChicken)
+            {
+                GameObject chicken = chickens[0];
+                chickens.RemoveAt(0);
+                GameObject.Destroy(chicken);
+            }
+            chickenCount--;           
             UpdateHPBars();
         }
     }

@@ -16,11 +16,8 @@ public class Card_ClaimReward : SkrptrAction
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    if (HitListMain.Instance.panelManageSoldier.chickenCount <= HitListMain.Instance.panelManageSoldier.maxChicken)
-                    {
-                        HitListMain.Instance.panelManageSoldier.balance += 50;
-                        HitListMain.Instance.panelManageSoldier.BuyChicken();
-                    }
+                    HitListMain.Instance.panelManageSoldier.balance += 50;
+                    HitListMain.Instance.panelManageSoldier.BuyChicken();
                 }
             }
             else
