@@ -34,7 +34,6 @@ public class Panel_MetricsMonthly : MonoBehaviour
         monthDD.onValueChanged.AddListener(delegate { MonthDDValueChanged(); });
         graphDD.onValueChanged.AddListener(delegate { GraphDDValueChanged(); });
         slider.onValueChanged.AddListener(delegate { SliderValueChanged(); });
-        Debug.Log("Added listeners");
         dayBars = GetComponentsInChildren<DayBar>();
         StartCoroutine(nameof(Init));
     }
@@ -63,7 +62,8 @@ public class Panel_MetricsMonthly : MonoBehaviour
 
     private void SliderValueChanged()
     {
-        sliderAS.Play();
+        if (Time.realtimeSinceStartup > 6)
+            sliderAS.Play();
         for (int i = 0; i < dayBars.Length; i++)
         {
             dayBars[i].activeState.gameObject.SetActive(false);

@@ -152,6 +152,7 @@ public class Panel_ManageSoldier : MonoBehaviour
             InitLevels();
         }
         InitLevelText();
+        SaveSoldier();
     }
     public void Die()
     {

@@ -22,6 +22,10 @@ namespace Skrptr
                 {
                     animDataColor[i].target.GetComponent<Text>().DOColor(animDataColor[i].targetColor, animDataColor[i].duration).SetDelay(animDataColor[i].delay);
                 }
+                else if (animDataColor[i].target.GetComponent<RawImage>() != null)
+                {
+                    animDataColor[i].target.GetComponent<RawImage>().DOColor(animDataColor[i].targetColor, animDataColor[i].duration).SetDelay(animDataColor[i].delay);
+                }
             }
         }
         public override void Start()
