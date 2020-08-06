@@ -60,8 +60,8 @@ public class Panel_MetricsYear : MonoBehaviour
 
     private void OnSliderValueChanged()
     {
-        if (Time.realtimeSinceStartup > 6)
-            sliderAS.Play();
+        //if (Time.realtimeSinceStartup > 6)
+        //    sliderAS.Play();
         foreach (var go in activeStatuses)
         {
             go.SetActive(false);

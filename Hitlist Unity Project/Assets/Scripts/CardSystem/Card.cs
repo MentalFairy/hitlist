@@ -170,14 +170,17 @@ public class Card : MonoBehaviour
                 break;
             }
         }
-        GetComponent<SkrptrElement>().Lock();
-        SkrptrElement nextActiveSkrptr = transform.parent.GetChild(nextActiveKidIndex).GetComponent<SkrptrElement>();
-        nextActiveSkrptr.Lock();
-        yield return new WaitForSecondsRealtime(0.25f);
-        transform.SetSiblingIndex(nextActiveKidIndex);
-        nextActiveSkrptr.Unlock();
-        GetComponent<SkrptrElement>().Unlock();
-        HitListMain.Instance.hierarchyChanged = true;
+        if (nextActiveKidIndex != -1)
+        {
+            GetComponent<SkrptrElement>().Lock();
+            SkrptrElement nextActiveSkrptr = transform.parent.GetChild(nextActiveKidIndex).GetComponent<SkrptrElement>();
+            nextActiveSkrptr.Lock();
+            yield return new WaitForSecondsRealtime(0.25f);
+            transform.SetSiblingIndex(nextActiveKidIndex);
+            nextActiveSkrptr.Unlock();
+            GetComponent<SkrptrElement>().Unlock();
+            HitListMain.Instance.hierarchyChanged = true;
+        }
     }
     public void DownPress()
     {
@@ -195,16 +198,18 @@ public class Card : MonoBehaviour
                 break;
             }
         }
+        if (nextActiveKidIndex != -1)
+        {
+            GetComponent<SkrptrElement>().Lock();
+            SkrptrElement nextActiveSkrptr = transform.parent.GetChild(nextActiveKidIndex).GetComponent<SkrptrElement>();
+            nextActiveSkrptr.Lock();
+            yield return new WaitForSecondsRealtime(0.25f);
+            transform.SetSiblingIndex(nextActiveKidIndex);
+            nextActiveSkrptr.Unlock();
+            GetComponent<SkrptrElement>().Unlock();
 
-        GetComponent<SkrptrElement>().Lock();
-        SkrptrElement nextActiveSkrptr = transform.parent.GetChild(nextActiveKidIndex).GetComponent<SkrptrElement>();
-        nextActiveSkrptr.Lock();
-        yield return new WaitForSecondsRealtime(0.25f);
-        transform.SetSiblingIndex(nextActiveKidIndex);
-        nextActiveSkrptr.Unlock();
-        GetComponent<SkrptrElement>().Unlock();
-
-        transform.SetSiblingIndex(nextActiveKidIndex);
-        HitListMain.Instance.hierarchyChanged = true;
+            transform.SetSiblingIndex(nextActiveKidIndex);
+            HitListMain.Instance.hierarchyChanged = true;
+        }
     }
 }

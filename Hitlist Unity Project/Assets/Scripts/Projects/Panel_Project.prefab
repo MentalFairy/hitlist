@@ -295,7 +295,7 @@ MonoBehaviour:
   - duration: 0.25
     delay: 0
     target: {fileID: 2448346928787257670}
-    targetColor: {r: 0.53333336, g: 0.6039216, b: 0.7058824, a: 1}
+    targetColor: {r: 0.5411765, g: 0.6117647, b: 0.70980394, a: 1}
 --- !u!114 &2448346928787257677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,7 +631,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8f5eebef2dd29854abe378444f071d25, type: 3}
+    m_Font: {fileID: 12800000, guid: 4e662172d17526e4d94639bc055067ae, type: 3}
     m_FontSize: 14
     m_FontStyle: 2
     m_BestFit: 1
@@ -708,7 +708,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 8f5eebef2dd29854abe378444f071d25, type: 3}
+    m_Font: {fileID: 12800000, guid: 4e662172d17526e4d94639bc055067ae, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1

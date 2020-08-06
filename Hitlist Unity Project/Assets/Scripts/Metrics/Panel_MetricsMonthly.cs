@@ -62,8 +62,8 @@ public class Panel_MetricsMonthly : MonoBehaviour
 
     private void SliderValueChanged()
     {
-        if (Time.realtimeSinceStartup > 6)
-            sliderAS.Play();
+        //if (Time.realtimeSinceStartup > 6)
+        //    sliderAS.Play();
         for (int i = 0; i < dayBars.Length; i++)
         {
             dayBars[i].activeState.gameObject.SetActive(false);

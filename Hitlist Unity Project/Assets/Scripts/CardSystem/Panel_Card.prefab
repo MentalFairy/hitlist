@@ -3852,7 +3852,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4e662172d17526e4d94639bc055067ae, type: 3}
-    m_FontSize: 18
+    m_FontSize: 19
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -3936,8 +3936,8 @@ RectTransform:
   m_Father: {fileID: 7410623020915716298}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.23321712, y: 0.6865738}
-  m_AnchorMax: {x: 0.37886342, y: 0.78131723}
+  m_AnchorMin: {x: 0.22205178, y: 0.6887588}
+  m_AnchorMax: {x: 0.35404864, y: 0.77913237}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3974,7 +3974,7 @@ MonoBehaviour:
     m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -4634,7 +4634,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 4e662172d17526e4d94639bc055067ae, type: 3}
-    m_FontSize: 18
+    m_FontSize: 19
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -5206,11 +5206,11 @@ RectTransform:
   m_Father: {fileID: 7410623020915716298}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.823638, y: 0.6865738}
-  m_AnchorMax: {x: 0.930672, y: 0.78131723}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.8144308, y: 0.69727683}
+  m_AnchorMax: {x: 0.9073185, y: 0.7706143}
+  m_AnchoredPosition: {x: -0.00000047683716, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.38955837, y: 0.3138956}
 --- !u!222 &7410623021079775057
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5510,8 +5510,8 @@ RectTransform:
   m_Father: {fileID: 7410623020915716298}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.6388738, y: 0.6865738}
-  m_AnchorMax: {x: 0.8236381, y: 0.78131723}
+  m_AnchorMin: {x: 0.64192444, y: 0.6937092}
+  m_AnchorMax: {x: 0.8266887, y: 0.774182}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

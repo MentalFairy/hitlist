@@ -8,7 +8,7 @@ public class SkrptrAnimPlaySound : SkrptrAnim
     public List<AnimData> animDataAudio;
     public override void Execute()
     {
-        if (Time.realtimeSinceStartup > 3)
+        if (Time.realtimeSinceStartup > 6)
         {
             for (int i = 0; i < animDataAudio.Count; i++)
             {
