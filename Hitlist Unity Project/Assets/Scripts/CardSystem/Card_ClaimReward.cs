@@ -20,10 +20,9 @@ public class Card_ClaimReward : SkrptrAction
                     HitListMain.Instance.panelManageSoldier.BuyChicken();
                 }
             }
-            else
-            {
-                HitListMain.Instance.panelManageSoldier.balance += 50;
-            }
+
+            HitListMain.Instance.panelManageSoldier.balance += 50;
+            
             HitListMain.Instance.panelManageSoldier.SaveSoldier();
             HitListMain.Instance.panelManageSoldier.UpdateBalances();
             card.GetComponent<SkrptrElement>().Lock();

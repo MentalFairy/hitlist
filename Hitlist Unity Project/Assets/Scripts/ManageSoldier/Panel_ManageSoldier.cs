@@ -49,23 +49,26 @@ public class Panel_ManageSoldier : MonoBehaviour
             chickenCount = int.Parse(soldierData[3]);
             chickenRegen = double.Parse(soldierData[4]);
             characterLevel = int.Parse(soldierData[5]);
-            InitLevelText();
+      
 
             customerTarget = int.Parse(soldierData[6]);
             currentCustomers = int.Parse(soldierData[7]);
             holidayBool = bool.Parse(soldierData[8]);
             StartCoroutine(nameof(InitHoliday));
-            InitCustomerData();
+   
             for (int i = 0; i < chickenCount && i<maxChicken; i++)
             {
                 chickens.Add(Instantiate(chickenIcon, chickenSlotsTransform));
             }
-            InitLevels();
+       
         }
         else
         {
             lastDrain = DateTime.Now;
         }
+        InitLevelText();
+        InitCustomerData();
+        InitLevels();
         UpdateBalances();
         InvokeRepeating(nameof(Drain), 0, 1);
     }

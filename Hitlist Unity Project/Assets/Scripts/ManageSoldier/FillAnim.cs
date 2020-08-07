@@ -9,12 +9,14 @@ public class FillAnim : SkrptrAnim
     public Image img;
     public Text label;
     private float timePassed = 0;
+    public bool animIsRunning = false;
     public override void Execute()
     {
         StartCoroutine(nameof(FillImage));
     }
     private IEnumerator FillImage()
     {
+        animIsRunning = true;
         img.fillAmount = 0;
         timePassed = 0;
         while (timePassed < 3.5f)
@@ -24,5 +26,6 @@ public class FillAnim : SkrptrAnim
             label.text = timePassed.ToString("0.0");
             yield return new WaitForSecondsRealtime(0.03f);
         }
+        animIsRunning = false;
     }
 }
