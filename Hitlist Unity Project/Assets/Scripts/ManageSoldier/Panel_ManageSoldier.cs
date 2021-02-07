@@ -25,15 +25,19 @@ public class Panel_ManageSoldier : MonoBehaviour
     public Transform chickenSlotsTransform;
     public List<GameObject> chickens;
     public GameObject[] levels;
+    public GameObject deathPanel;
+    public Text deathStampText;
     public Text levelLabel, currentCustomersLabel,customerCurrentAndTarget,characterVoiceLabel;
     public InputField targetCustomersInputField;
 
     public int characterLevel = 1;
     bool holidayBool;
-    public DateTime lastDrain;
+    public DateTime lastDrain,deathTime;
     private void Awake()
     {
         HitListMain.Instance.panelManageSoldier = this;
+        deathTime = DateTime.MinValue;
+        deathPanel.SetActive(false);
     }
     private void Start()
     {
@@ -43,6 +47,7 @@ public class Panel_ManageSoldier : MonoBehaviour
         {
             string[] soldierData = savedData.Split('|');
             HP = float.Parse(soldierData[0]);
+    
             lastDrain = DateTime.Parse(soldierData[1]);
 
             balance = int.Parse(soldierData[2]);
@@ -54,13 +59,20 @@ public class Panel_ManageSoldier : MonoBehaviour
             customerTarget = int.Parse(soldierData[6]);
             currentCustomers = int.Parse(soldierData[7]);
             holidayBool = bool.Parse(soldierData[8]);
+
+            DateTime.TryParse(soldierData[9], out deathTime);
+            if(!deathTime.Equals(DateTime.MinValue))
+            {
+                deathPanel.SetActive(true);
+                deathStampText.text = deathTime.ToString("HH:mm dd-MM-yyyy");
+            }
+
             StartCoroutine(nameof(InitHoliday));
    
             for (int i = 0; i < chickenCount && i<maxChicken; i++)
             {
                 chickens.Add(Instantiate(chickenIcon, chickenSlotsTransform));
-            }
-       
+            }       
         }
         else
         {
@@ -159,7 +171,12 @@ public class Panel_ManageSoldier : MonoBehaviour
     }
     public void Die()
     {
-
+        if (deathTime.Equals(DateTime.MinValue))
+        {
+            deathTime = DateTime.Now;
+            deathStampText.text = deathTime.ToString("HH:mm dd-MM-yyyy");
+            deathPanel.SetActive(true);
+        }
     }
     public void Drain()
     {
@@ -169,8 +186,9 @@ public class Panel_ManageSoldier : MonoBehaviour
             {
                 double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute / 60f * characterLevel;
                 HP -= drain;
-                //Debug.Log("Drained: " + drain);              
-                UpdateHPBars();
+                if (HP < 0)
+                    HP = 0;
+                //Debug.Log("Drained: " + drain);     
             }
             else if(HP < 0)
             {
@@ -178,6 +196,7 @@ public class Panel_ManageSoldier : MonoBehaviour
                 Die();
             }
         }
+        UpdateHPBars();
         lastDrain = DateTime.Now;
     }
     public void SaveSoldier()
@@ -185,7 +204,7 @@ public class Panel_ManageSoldier : MonoBehaviour
         string dataToSave = "";
         dataToSave += HP + "|" + lastDrain.ToString() + "|" + balance.ToString() + "|" + chickenCount.ToString()
         + "|" + chickenRegen.ToString() + "|" + characterLevel + "|" + customerTarget.ToString() + "|" + currentCustomers.ToString()
-        +"|" + holiday.isChecked.ToString();
+        +"|" + holiday.isChecked.ToString() + "|" + deathTime.ToString();
         SaveLoad.Save(dataToSave, SaveLoad.SoldierFileName);
     }
     public void UpdateHPBars()

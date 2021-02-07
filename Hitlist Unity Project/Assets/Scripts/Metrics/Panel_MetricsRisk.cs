@@ -53,7 +53,26 @@ public class Panel_MetricsRisk : MonoBehaviour
     {
         storiesCategorizedCounter = new int[targetHours.Length];
         List<Card> cards = HitListMain.Instance.panelCards.cards.Where(c => c.creationDate.Year == yearDD.value + 2020).ToList<Card>();
+
+        foreach (var card in HitListMain.Instance.panelCards.cards)
+        {
+            Debug.Log(card.creationDate.Year);
+        }
+        foreach (var card in cards)
+        {
+            Debug.LogError(card.creationDate.Year);
+        }
         int cardsCount = cards.Count;
+        for (int i = 0; i < storiesCounterLabels.Length; i++)
+        {
+            storiesCounterLabels[i].text = storiesCategorizedCounter[i].ToString();
+        }
+        for (int i = 0; i < riskCounterLabels.Length; i++)
+        {
+            riskCounterLabels[i].text = "0%";
+            percentCounterLabels[i].text = "0";
+            riskImages[i].color = Color.red;
+        }
         if (cardsCount > 0)
         {
             foreach (var item in HitListMain.Instance.panelCards.cards)
@@ -73,13 +92,14 @@ public class Panel_MetricsRisk : MonoBehaviour
                     }
                 }
             }
-            for (int i = 0; i < storiesCounterLabels.Length; i++)
-            {
-                storiesCounterLabels[i].text = storiesCategorizedCounter[i].ToString();
-            }
             for (int i = 0; i < percentCounterLabels.Length; i++)
             {
                 percentCounterLabels[i].text = ((float)(storiesCategorizedCounter[i]) / (float)(cardsCount) * 100f).ToString("0.00");
+                Debug.Log(storiesCategorizedCounter[i] + " " + cardsCount);
+            }
+            for (int i = 0; i < storiesCounterLabels.Length; i++)
+            {
+                storiesCounterLabels[i].text = storiesCategorizedCounter[i].ToString();
             }
             int percentCount = 0;
             int cardsRiskCounter = 0;
@@ -109,6 +129,10 @@ public class Panel_MetricsRisk : MonoBehaviour
                 monthLabels[i].text = monthLabels[i].text = ((float)monthCards.Count / 4f).ToString("0.0");
             }
             yearLabel.text = ((float)cardsCount / 52f).ToString("0.000");
+        }
+        else
+        {
+
         }
     }
 }

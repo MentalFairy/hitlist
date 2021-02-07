@@ -34,11 +34,10 @@ public class Panel_CustomerDelta : MonoBehaviour
                 //Debug.LogError("Added delta: " + dateTime.ToString() + " " + value);
             }
         }
-        GenerateDeltas();
+        //GenerateDeltas();
     }
     public void GenerateDeltas()
     {
-
         customerDeltas.Clear();
         for (int i = 1; i <= 12; i++)
         {

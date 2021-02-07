@@ -13,12 +13,16 @@ public class Panel_MetricsMonthly : MonoBehaviour
     public SkrptrElement dayMetrics, yearMetrics;
     public Dropdown yearDD, monthDD, graphDD;
     public Slider slider;
-    public Text wonLabel, lostLabel,totalWonLabel,totalLostLabel,totalWonLabelValue,totalLostLabelValue;
+    public Text wonLabel, lostLabel,totalWonLabel,totalLostLabel,totalWonLabelValue,totalLostLabelValue, monthResultMonthText, monthResultTotalText,countdownText;
+    public int countdownTarget = 42;
     public DayBar[] dayBars;
     public GameObject[] positiveDots, negativeDots;
     public Text[] yValueTexts;
     public int maxValueGains, maxValueLosses, daysInMonth;
     public int[] gains, losses;
+
+    public Color positiveTotalColor = Color.green, negativeTotalColor = Color.red;
+
 
     private void Awake()
     {
@@ -85,7 +89,7 @@ public class Panel_MetricsMonthly : MonoBehaviour
         Debug.Log("Month changed");
         InitGraph();
         UpdateWonLostLabels();
-        totalLostLabel.text = totalWonLabel.text = monthDD.options[monthDD.value].text;
+        totalLostLabel.text = totalWonLabel.text = monthResultMonthText.text = monthDD.options[monthDD.value].text;
         int totalGains = 0;
         int totalLosses = 0;
         for (int i = 0; i < gains.Length; i++)
@@ -95,6 +99,18 @@ public class Panel_MetricsMonthly : MonoBehaviour
         }
         totalLostLabelValue.text = totalLosses.ToString();
         totalWonLabelValue.text = totalGains.ToString();
+        int deltaGainsLosses = totalGains - totalLosses;
+        monthResultTotalText.text = deltaGainsLosses.ToString();
+
+        if (deltaGainsLosses < 0)
+            countdownText.text = $"{countdownTarget}/{countdownTarget}";
+        else
+            countdownText.text = $"{countdownTarget - deltaGainsLosses}/{countdownTarget}";
+
+        if (deltaGainsLosses > 0)
+            monthResultTotalText.color = positiveTotalColor;
+        else
+            monthResultTotalText.color = negativeTotalColor;
     }
 
     private void YearDDValueChanged()
@@ -113,7 +129,7 @@ public class Panel_MetricsMonthly : MonoBehaviour
         for (int i = 0; i < daysInMonth; i++)
         {
             dayBars[i].gameObject.SetActive(true);
-            CustomerDelta[] deltasInDay = deltas.Where(d => d.date.Day == i).ToArray();
+            CustomerDelta[] deltasInDay = deltas.Where(d => d.date.Day == i+1).ToArray();
             foreach (var delta in deltasInDay)
             {
                 if (delta.value < 0)
@@ -213,6 +229,5 @@ public class Panel_MetricsMonthly : MonoBehaviour
 
             }
         }
-
     }
 }
