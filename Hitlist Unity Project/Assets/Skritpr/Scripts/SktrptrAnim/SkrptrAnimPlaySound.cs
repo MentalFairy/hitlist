@@ -15,7 +15,7 @@ public class SkrptrAnimPlaySound : SkrptrAnim
                 if (animDataAudio[i].target.GetComponent<AudioSource>() != null)
                 {
                     animDataAudio[i].target.GetComponent<AudioSource>().PlayDelayed(animDataAudio[i].delay);
-                    Debug.Log("Playing: " + gameObject.name);
+                    //Debug.Log("Playing: " + gameObject.name);
                 }
             }
         }

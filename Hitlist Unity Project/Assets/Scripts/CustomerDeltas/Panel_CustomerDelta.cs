@@ -41,10 +41,10 @@ public class Panel_CustomerDelta : MonoBehaviour
         customerDeltas.Clear();
         for (int i = 1; i <= 12; i++)
         {
-            for (int j = 1; j <= DateTime.DaysInMonth(2020,i); j++)
+            for (int j = 1; j <= DateTime.DaysInMonth(2021,i); j++)
             {
-                customerDeltas.Add(new CustomerDelta(new DateTime(2020, i, j), UnityEngine.Random.Range(-10, 0)));
-                customerDeltas.Add(new CustomerDelta(new DateTime(2020, i, j), UnityEngine.Random.Range(0, 30)));
+                customerDeltas.Add(new CustomerDelta(new DateTime(2021, i, j), UnityEngine.Random.Range(-10, 0)));
+                customerDeltas.Add(new CustomerDelta(new DateTime(2021, i, j), UnityEngine.Random.Range(0, 30)));
             }
         }
         SaveDeltas();
@@ -81,6 +81,7 @@ public class Panel_CustomerDelta : MonoBehaviour
         CheckValue();
         SaveDeltas();
         CountCustomers();
+        HitListMain.Instance.panelMetricsYear.RefreshValues();
     }
     public void SaveDeltas()
     {

@@ -52,7 +52,7 @@ public class Panel_MetricsYear : MonoBehaviour
           
             janTarget.text = yearStatisticsData[0];
             decTarget.text = yearStatisticsData[1];
-            UpdateYValues();
+            RefreshValues();
         }
         Invoke(nameof(OnYearDDValueChanged), 1);
         Invoke(nameof(OnSliderValueChanged), 1.1f);
@@ -114,14 +114,14 @@ public class Panel_MetricsYear : MonoBehaviour
 
     private void OnEndEditDecTarget()
     {
-        UpdateYValues();
+        RefreshValues();
     }
 
     private void OnEndEditJanTarget()
     {
-        UpdateYValues();        
+        RefreshValues();        
     }
-    private void UpdateYValues()
+    public void RefreshValues()
     {
         int delta = int.Parse(decTarget.text) - int.Parse(janTarget.text);
         yValues[0].text = janTarget.text;
@@ -168,9 +168,30 @@ public class Panel_MetricsYear : MonoBehaviour
         {
             sum += wonByMonth[i] + lostByMonth[i];
             clientsActualByMonth[i] = sum;
-            points[i+1] = new Vector3((i+1) / 12f * textureWidth, clientsActualByMonth[i] / float.Parse(decTarget.text) * textureHeight,0);
+
+            Vector2 point = Vector2.zero;
+
+            if (clientsActualByMonth[i] / float.Parse(decTarget.text) * textureHeight > 1)
+            {
+                point.y = clientsActualByMonth[i] / float.Parse(decTarget.text) * textureHeight - 12;
+            }
+            else
+            {
+                point.y = clientsActualByMonth[i] / float.Parse(decTarget.text) * textureHeight;
+            }
+            if(i==0 || i == 11)
+            {
+                point.x = i / 12f * textureWidth;
+            }
+            else
+            {
+                point.x = i / 12f * textureWidth -12f;
+            }
+
+            points[i] = point;
         }
         lineRenderer.SetPositions(points);
+        OnSliderValueChanged();
     }
 
 

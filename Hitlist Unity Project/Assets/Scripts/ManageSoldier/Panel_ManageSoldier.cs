@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class Panel_ManageSoldier : MonoBehaviour
 {
     public double HP = 50;
-    public double drainPerMinute = 0.005f;
+    public double maxHP = 0;
+    public double[] drainPerMinute;
     public int balance = 0;
     public int chickenCount =0;
     public double chickenRegen = 50;
@@ -111,8 +112,63 @@ public class Panel_ManageSoldier : MonoBehaviour
         currentCustomersLabel.text = currentCustomers.ToString();
         customerCurrentAndTarget.text = currentCustomers.ToString() + "/" + customerTarget.ToString();
     }
+
+    private void UpdateCharacterLevel()
+    {
+        if (HP > 0 && HP < 50)
+        {
+            characterLevel = 1;
+            maxHP = 50;
+        }
+        else if (HP >= 50 && HP < 75)
+        {
+            characterLevel = 2;
+            maxHP = 75;
+        }
+        else if (HP >= 75 && HP < 100)
+        {
+            characterLevel = 3;
+            maxHP = 100;
+        }
+        else if (HP >= 100 && HP < 125)
+        {
+            characterLevel = 4;
+            maxHP = 125;
+        }
+        else if (HP >= 125 && HP < 150)
+        {
+            characterLevel = 5;
+            maxHP = 150;
+        }
+        else if (HP >= 150 && HP < 350)
+        {
+            characterLevel = 6;
+            maxHP = 350;
+        }
+        else if (HP >= 350 && HP < 400)
+        {
+            characterLevel = 7;
+            maxHP = 400;
+        }
+        else if (HP >= 400 && HP < 450)
+        {
+            characterLevel = 8;
+            maxHP = 450;
+        }
+        else if (HP >= 450 && HP < 500)
+        {
+            characterLevel = 9;
+            maxHP = 500;
+        }
+        else if (HP >= 500)
+        {
+            characterLevel = 10;
+            maxHP = 500;
+        }
+    }
     public void InitLevels()
     {
+        UpdateCharacterLevel();
         for (int i = 0; i < levels.Length; i++)
         {
             levels[i].SetActive(false);
@@ -143,11 +199,7 @@ public class Panel_ManageSoldier : MonoBehaviour
         if (chickenCount > 0)
         {
             HP += chickenRegen;
-            if (HP > 50 * characterLevel && characterLevel < 10)
-                LevelUp();
-
-            if (HP > 50 * characterLevel)
-                HP = 50 * characterLevel;
+            InitLevels();
 
             if (chickenCount <= maxChicken)
             {
@@ -184,8 +236,9 @@ public class Panel_ManageSoldier : MonoBehaviour
         {
             if (HP > 0)
             {
-                double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute / 60f * characterLevel;
+                double drain = (DateTime.Now - lastDrain).TotalSeconds * drainPerMinute[characterLevel-1] / 60f * characterLevel;
                 HP -= drain;
+                InitLevels();
                 if (HP < 0)
                     HP = 0;
                 //Debug.Log("Drained: " + drain);     
@@ -199,6 +252,8 @@ public class Panel_ManageSoldier : MonoBehaviour
         UpdateHPBars();
         lastDrain = DateTime.Now;
     }
+
+
     public void SaveSoldier()
     {
         string dataToSave = "";
@@ -211,7 +266,7 @@ public class Panel_ManageSoldier : MonoBehaviour
     {
         foreach (var item in fillHpBars)
         {
-            item.fillAmount = 1 - (float)(HP / (50f * characterLevel));
+            item.fillAmount = 1 - (float)(HP /  maxHP);
         }
         foreach (var item in HPtexts)
         {
